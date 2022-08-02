@@ -20,10 +20,11 @@ dbConnection();
 app.use(express.json())
 app.use(express.urlencoded({ extended : true }))
 
-app.use('/graphql', graphqlHTTP({
+app.use('/graphql', 
+    graphqlHTTP({
     schema,
-    graphiql : process.env.NODE_ENV === 'development'
-}))
+    graphiql : process.env.NODE_ENV === 'development',
+}));
 
 app.use('/', userRoute)
 

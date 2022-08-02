@@ -1,12 +1,11 @@
-app.get('/', (req, res) => {
-    res.send('API is running...')
-  })
+const express = require('express')
+const router = express.Router();
+
+const { getProduct, getProductById } = require('../controller/productController')
+
   
-  app.get('/api/products', (req, res) => {
-    res.json(products)
-  })
-  
-  app.get('/api/products/:id', (req, res) => {
-    const product = products.find((p) => p._id === req.params.id)
-    res.json(product)
-  })
+router.get('/', getProduct)
+
+router.get('/:id', getProductById)
+
+module.exports = router;

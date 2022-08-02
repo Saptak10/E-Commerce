@@ -9,7 +9,9 @@ const { graphqlHTTP } = require('express-graphql');
 
 const dbConnection = require('./config/dbConnection');
 const errorHandler = require('./middleware/errorMidlleware')
+
 const userRoute = require('./route/userRoutes');
+const productRoute = require('./route/productRoutes');
 
 const schema = require('./schema/schema.js');
 
@@ -27,6 +29,10 @@ app.use('/graphql',
 }));
 
 app.use('/', userRoute)
+app.use('/', (req, res) => {
+    res.send('API is running...')
+})
+app.use('/api/products', productRoute)
 
 app.use(errorHandler)
 

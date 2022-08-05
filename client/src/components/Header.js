@@ -20,6 +20,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 
+import { Link } from 'react-router-dom'
+
 const drawerWidth = 240;
 const navItems = ['Home', 'Login', 'Register', 'Logout'];
 
@@ -122,7 +124,7 @@ function Header(props) {
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+            <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -151,7 +153,7 @@ function Header(props) {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            E-Commerce App
+            <Link to='/'>E-Commerce App</Link>
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Search>
@@ -181,7 +183,7 @@ function Header(props) {
           aria-haspopup="true"
           color="inherit"
         >
-          <AddShoppingCartOutlinedIcon />
+          <Link to='/cart'><AddShoppingCartOutlinedIcon /></Link>
         </IconButton>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
@@ -212,7 +214,7 @@ function Header(props) {
               aria-haspopup="true"
               color="inherit"
             >
-              <AddShoppingCartOutlinedIcon />
+              <Link to='/cart'><AddShoppingCartOutlinedIcon /></Link>
             </IconButton>
           </Box>
         </Toolbar>

@@ -1,9 +1,5 @@
 const mongoose = require('mongoose')
 
-// const itemSchema = mongoose.Schema({
-
-// })
-
 const orderSchema = mongoose.Schema(
     {
         user: {
@@ -37,7 +33,7 @@ const orderSchema = mongoose.Schema(
             },
         ],
         shippingAddress: {
-            adress: { 
+            address: { 
                 type: String,
                 required: true,
              },

@@ -1,5 +1,8 @@
 const Project = require('../models/projectModel');
 const Client = require('../models/clientModel');
+const Product = require('../models/productModel');
+const Order = require('../models/orderModel');
+const User = require('../models/userModel');
 
 const {
   GraphQLObjectType,
@@ -9,6 +12,8 @@ const {
   GraphQLList,
   GraphQLNonNull,
   GraphQLEnumType,
+  GraphQLBoolean,
+  GraphQLInt,
 } = require('graphql');
 
 // Project Type
@@ -36,6 +41,96 @@ const ClientType = new GraphQLObjectType({
     name: { type: GraphQLString },
     email: { type: GraphQLString },
     phone: { type: GraphQLString },
+  }),
+});
+
+// Product Type
+const ProductType = new GraphQLObjectType({
+  name: 'Product',
+  fields: () => ({
+    id: { type: GraphQLID },
+    user: {
+      type: UserType,
+      resolve(parent, args) {
+        return User.findById(parent.userId);
+      },
+    },
+    name: { type: GraphQLString },
+    image: { type: GraphQLString },
+    brand: { type: GraphQLString },
+    category: { type: GraphQLString },
+    description: { type: GraphQLString },
+    reviews: [ 
+      { 
+        name: { type: GraphQLString },
+        rating: { type: GraphQLInt },
+        comment: { type: GraphQLString },
+      },
+    ],
+    ratings: { type: GraphQLString },
+    numReviews: { type: GraphQLString },
+    price: { type: GraphQLString },
+    countInStock: { type: GraphQLString },
+  }),
+});
+
+// Order Type
+const OrderType = new GraphQLObjectType({
+  name: 'Order',
+  fields: () => ({
+    id: { type: GraphQLID },
+    user: {
+      type: UserType,
+      resolve(parent, args) {
+        return User.findById(parent.userId);
+      },
+    },
+    orderItems: [ 
+      { 
+        name: { type: GraphQLString },
+        qty: { type: GraphQLInt },
+        image: { type: GraphQLString },
+        price: { type: GraphQLInt },
+        product: {
+          type: ProductType,
+          resolve(parent, args) {
+            return Product.findById(parent.productId);
+          },
+        },
+      },
+    ],
+    shippingAddress: { 
+      address: { type: GraphQLString },
+      city: { type: GraphQLString },
+      postalCode: { type: GraphQLString },
+      country: { type: GraphQLString },
+    },
+    paymentMethod: { type: GraphQLString },
+    paymentResult: { 
+      id: { type: GraphQLString },
+      status: { type: GraphQLString },
+      update_time: { type: GraphQLString },
+      email_address: { type: GraphQLString },
+    },
+    taxPrice: { type: GraphQLInt },
+    shippingPrice: { type: GraphQLInt },
+    totalPrice: { type: GraphQLInt },
+    isPaid: { type: GraphQLBoolean },
+    paidAt: { type: GraphQLString },
+    isDelivered: { type: GraphQLBoolean },
+    deliveredAt: { type: GraphQLString },
+  }),
+});
+
+// User Type
+const UserType = new GraphQLObjectType({
+  name: 'User',
+  fields: () => ({
+    id: { type: GraphQLID },
+    name: { type: GraphQLString },
+    email: { type: GraphQLString },
+    password: { type: GraphQLString },
+    isAdmin: { type: GraphQLBoolean },
   }),
 });
 

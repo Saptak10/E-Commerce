@@ -16,33 +16,33 @@ const {
   GraphQLInt,
 } = require('graphql');
 
-// Project Type
-const ProjectType = new GraphQLObjectType({
-  name: 'Project',
-  fields: () => ({
-    id: { type: GraphQLID },
-    name: { type: GraphQLString },
-    description: { type: GraphQLString },
-    status: { type: GraphQLString },
-    client: {
-      type: ClientType,
-      resolve(parent, args) {
-        return Client.findById(parent.clientId);
-      },
-    },
-  }),
-});
+// // Project Type
+// const ProjectType = new GraphQLObjectType({
+//   name: 'Project',
+//   fields: () => ({
+//     id: { type: GraphQLID },
+//     name: { type: GraphQLString },
+//     description: { type: GraphQLString },
+//     status: { type: GraphQLString },
+//     client: {
+//       type: ClientType,
+//       resolve(parent, args) {
+//         return Client.findById(parent.clientId);
+//       },
+//     },
+//   }),
+// });
 
-// Client Type
-const ClientType = new GraphQLObjectType({
-  name: 'Client',
-  fields: () => ({
-    id: { type: GraphQLID },
-    name: { type: GraphQLString },
-    email: { type: GraphQLString },
-    phone: { type: GraphQLString },
-  }),
-});
+// // Client Type
+// const ClientType = new GraphQLObjectType({
+//   name: 'Client',
+//   fields: () => ({
+//     id: { type: GraphQLID },
+//     name: { type: GraphQLString },
+//     email: { type: GraphQLString },
+//     phone: { type: GraphQLString },
+//   }),
+// });
 
 // Product Type
 const ProductType = new GraphQLObjectType({
@@ -137,30 +137,69 @@ const UserType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
-    projects: {
-      type: new GraphQLList(ProjectType),
+    // projects: {
+    //   type: new GraphQLList(ProjectType),
+    //   resolve(parent, args) {
+    //     return Project.find();
+    //   },
+    // },
+    // project: {
+    //   type: ProjectType,
+    //   args: { id: { type: GraphQLID } },
+    //   resolve(parent, args) {
+    //     return Project.findById(args.id);
+    //   },
+    // },
+    // clients: {
+    //   type: new GraphQLList(ClientType),
+    //   resolve(parent, args) {
+    //     return Client.find();
+    //   },
+    // },
+    // client: {
+    //   type: ClientType,
+    //   args: { id: { type: GraphQLID } },
+    //   resolve(parent, args) {
+    //     return Client.findById(args.id);
+    //   },
+    // },
+    users: {
+      type: new GraphQLList(UserType),
       resolve(parent, args) {
-        return Project.find();
+        return User.find();
       },
     },
-    project: {
-      type: ProjectType,
+    user: {
+      type: UserType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        return Project.findById(args.id);
+        return User.findById(args.id);
       },
     },
-    clients: {
-      type: new GraphQLList(ClientType),
+    products: {
+      type: new GraphQLList(ProductType),
       resolve(parent, args) {
-        return Client.find();
+        return User.find();
       },
     },
-    client: {
-      type: ClientType,
+    product: {
+      type: ProductType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        return Client.findById(args.id);
+        return Product.findById(args.id);
+      },
+    },
+    orders: {
+      type: new GraphQLList(OrderType),
+      resolve(parent, args) {
+        return User.find();
+      },
+    },
+    order: {
+      type: OrderType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args) {
+        return Order.findById(args.id);
       },
     },
   },

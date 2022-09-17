@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
-import GoBackBtn from '../ui/GoBackBtn';
+// import GoBackBtn from '../ui/GoBackBtn';
 
 const Cart = () => {
   // const { amountOfItemsInCart, totalCartPrice, cart, removeItemFromCart } =

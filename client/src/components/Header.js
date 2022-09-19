@@ -22,8 +22,9 @@ import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutl
 
 import { Link } from 'react-router-dom'
 
-const drawerWidth = 240;
-const navItems = ['Home', 'Login', 'Register', 'Logout'];
+import '../App.css'
+
+const drawerWidth = 200;
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -109,25 +110,46 @@ function Header(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link to='/profile' className='header-link-mobile'>Profile</Link></MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link to='/profile' className='header-link-mobile'>My account</Link></MenuItem>
     </Menu>
   );
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Menu
+        E-Commerce App
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-            <ListItemText primary={item} />
+          <ListItem>
+            <ListItemButton>
+            <Link to='/' className='header-link-mobile'>
+              <ListItemText primary='Home' />
+            </Link>
             </ListItemButton>
           </ListItem>
-        ))}
+          <ListItem>
+            <ListItemButton>
+            <Link to='/login' className='header-link-mobile'>
+              <ListItemText primary='Login' sx={{ color: 'black' }}/>
+            </Link>
+            </ListItemButton>
+          </ListItem>
+          <ListItem>
+            <ListItemButton>
+            <Link to='/register' className='header-link-mobile'>
+              <ListItemText primary='Register' sx={{ color: 'black' }}/>
+            </Link>
+            </ListItemButton>
+          </ListItem>
+          <ListItem>
+            <ListItemButton>
+            <Link to='/logout' className='header-link-mobile'>
+              <ListItemText primary='Logout' sx={{ color: 'black' }}/>
+            </Link>
+            </ListItemButton>
+          </ListItem>
       </List>
     </Box>
   );
@@ -153,7 +175,7 @@ function Header(props) {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            <Link to='/'>E-Commerce App</Link>
+            <Link to='/' className='header-link-desktop'>E-Commerce App</Link>
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Search>
@@ -161,7 +183,7 @@ function Header(props) {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="SEARCH"
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
@@ -187,11 +209,18 @@ function Header(props) {
         </IconButton>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
+              <Button sx={{ color: '#fff' }}>
+                <Link to='/' className='header-link-desktop'>Home</Link>
               </Button>
-            ))}
+              <Button sx={{ color: '#fff' }}>
+                <Link to='/login' className='header-link-desktop'>Login</Link>
+              </Button>
+              <Button sx={{ color: '#fff' }}>
+                <Link to='/register' className='header-link-desktop'>Register</Link>
+              </Button>
+              <Button sx={{ color: '#fff' }}>
+                <Link to='/logout' className='header-link-desktop'>Logout</Link>
+              </Button>
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton
@@ -214,7 +243,7 @@ function Header(props) {
               aria-haspopup="true"
               color="inherit"
             >
-              <Link to='/cart'><AddShoppingCartOutlinedIcon /></Link>
+              <Link to='/cart'><AddShoppingCartOutlinedIcon sx={{ color: 'white' }}/></Link>
             </IconButton>
           </Box>
         </Toolbar>

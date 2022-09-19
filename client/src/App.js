@@ -4,9 +4,10 @@ import { ToastContainer } from 'react-toastify'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
-import Login from './components/Login';
-import Register from './components/Register';
-import Cart from './components/Cart/Cart';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Cart from './pages/Cart/Cart';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/profile' element={<Profile />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
           </Routes>

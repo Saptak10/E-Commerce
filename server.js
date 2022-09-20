@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 const { graphqlHTTP } = require('express-graphql');
 
 const dbConnection = require('./config/dbConnection');
-const errorHandler = require('./middleware/errorMidlleware')
+const errorHandler = require('./middleware/errorMiddleware')
 
 const userRoute = require('./route/userRoutes');
 const productRoute = require('./route/productRoutes');
@@ -29,13 +29,13 @@ app.use('/graphql',
 }));
 
 app.use('/', userRoute)
-app.use('/', (req, res) => {
-    res.send('API is running...')
-})
+// app.use('/', (req, res) => {
+//     res.send('API is running...')
+// })
 app.use('/api/products', productRoute)
 
 app.use(errorHandler)
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Listening at port ${port}`));
+app.listen(port, () => console.log(`Listening at port http://localhost:${port}/`));

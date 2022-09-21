@@ -169,7 +169,7 @@ function Header(props) {
           aria-haspopup="true"
           color="inherit"
         >
-          <Link to='/cart'><AddShoppingCartOutlinedIcon /></Link>
+          <Link to='/cart'><AddShoppingCartOutlinedIcon  sx={{ color: 'white' }}/></Link>
         </IconButton>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>

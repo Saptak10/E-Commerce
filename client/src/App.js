@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Cart from './pages/Cart/Cart';
+import Cart from './pages/Cart';
 import Profile from './pages/Profile';
 
 function App() {
@@ -18,6 +18,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/address' element={<Cart />} />
+            <Route path='/checkout' element={<Cart />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />

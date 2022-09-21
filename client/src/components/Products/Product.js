@@ -34,6 +34,22 @@ const Container = styled.div`
     }
 `;
 
+const PriceBox = styled.div`
+    flex: 1;
+    margin: 5px;
+    min-width: 280px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #99ff99;
+    position: relative;
+    border-radius: 10px;
+    &:hover ${Info}{
+        opacity: 1;
+    }
+`;
+
 const Circle = styled.div`
     width: 200px;
     height: 200px;
@@ -65,6 +81,7 @@ const Icon = styled.div`
 
 const Product = ({ item }) => {
 return (
+    <div>
     <Container>
     <Circle />
     <Image src={item.img} />
@@ -80,6 +97,8 @@ return (
         </Icon>
     </Info>
     </Container>
+    <PriceBox><b>Price:</b>{item.price}</PriceBox>
+    </div>
 );
 };
 

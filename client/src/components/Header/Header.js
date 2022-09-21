@@ -1,71 +1,42 @@
 import { useState } from 'react'
 
 import { AppBar, Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, 
-  ListItemText, Toolbar, Typography, Button, InputBase, MenuItem, Menu } from '@mui/material';
+  ListItemText, Toolbar, Typography, Button, MenuItem, Menu } from '@mui/material';
 
 import { AccountCircle } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 
-import { styled, alpha } from '@mui/material/styles';
+import Search from './Search'
+import SearchIconWrapper from './SearchIconWrapper'
+import StyledInputBase from './StyledInputBase'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { logout, reset } from '../features/user/userSlice'
+import { logout, reset } from '../.././features/user/userSlice'
 
 import { Link, useNavigate } from 'react-router-dom'
 
-import '../App.css'
+import '../../App.css'
 
 const drawerWidth = 200;
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-}));
-
 function Header(props) {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const { user } = useSelector((state) => state.user)
+  console.log(user)
+
+  const onLogout = () => {
+    dispatch(logout())
+    dispatch(reset())
+    navigate('/')
+  }
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  // const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
 
@@ -77,13 +48,8 @@ function Header(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  // const handleMobileMenuOpen = (event) => {
-  //   setMobileMoreAnchorEl(event.currentTarget);
-  // };
-
   const handleMenuClose = () => {
     setAnchorEl(null);
-    // handleMobileMenuClose();
   };
 
   const menuId = 'primary-search-account-menu';
@@ -104,7 +70,6 @@ function Header(props) {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}><Link to='/profile' className='header-link-mobile'>Profile</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to='/profile' className='header-link-mobile'>My account</Link></MenuItem>
     </Menu>
   );
 
@@ -117,32 +82,38 @@ function Header(props) {
       <List>
           <ListItem>
             <ListItemButton>
-            <Link to='/' className='header-link-mobile'>
-              <ListItemText primary='Home' />
-            </Link>
+              <Link to='/' className='header-link-mobile'>
+                <ListItemText primary='Home' />
+              </Link>
             </ListItemButton>
           </ListItem>
-          <ListItem>
-            <ListItemButton>
-            <Link to='/login' className='header-link-mobile'>
-              <ListItemText primary='Login' sx={{ color: 'black' }}/>
-            </Link>
-            </ListItemButton>
-          </ListItem>
-          <ListItem>
-            <ListItemButton>
-            <Link to='/register' className='header-link-mobile'>
-              <ListItemText primary='Register' sx={{ color: 'black' }}/>
-            </Link>
-            </ListItemButton>
-          </ListItem>
-          <ListItem>
-            <ListItemButton>
-            <Link to='/logout' className='header-link-mobile'>
-              <ListItemText primary='Logout' sx={{ color: 'black' }}/>
-            </Link>
-            </ListItemButton>
-          </ListItem>
+          {user ? (
+            <ListItem>
+              <ListItemButton>
+              {/* <Link onClick={onLogout} className='header-link-mobile'> */}
+              <div onClick={onLogout} className='header-link-mobile'>
+                <ListItemText primary='Logout' sx={{ color: 'black' }}/>
+              </div>
+              </ListItemButton>
+            </ListItem>
+          ) : (
+            <>
+              <ListItem>
+                <ListItemButton>
+                  <Link to='/login' className='header-link-mobile'>
+                    <ListItemText primary='Login' sx={{ color: 'black' }}/>
+                  </Link>
+                </ListItemButton>
+              </ListItem>
+              <ListItem>
+                <ListItemButton>
+                  <Link to='/register' className='header-link-mobile'>
+                    <ListItemText primary='Register' sx={{ color: 'black' }}/>
+                  </Link>
+                </ListItemButton>
+              </ListItem>
+            </>
+            )}
       </List>
     </Box>
   );
@@ -205,15 +176,21 @@ function Header(props) {
               <Button sx={{ color: '#fff' }}>
                 <Link to='/' className='header-link-desktop'>Home</Link>
               </Button>
-              <Button sx={{ color: '#fff' }}>
-                <Link to='/login' className='header-link-desktop'>Login</Link>
+                {user ? (
+                <Button sx={{ color: '#fff' }}>
+                {/* <Link onClick={onLogout} className='header-link-desktop'>Logout</Link> */}
+                <div onClick={onLogout} className='header-link-desktop'>Logout</div>
               </Button>
-              <Button sx={{ color: '#fff' }}>
-                <Link to='/register' className='header-link-desktop'>Register</Link>
-              </Button>
-              <Button sx={{ color: '#fff' }}>
-                <Link to='/logout' className='header-link-desktop'>Logout</Link>
-              </Button>
+               ) : (
+              <>
+                <Button sx={{ color: '#fff' }}>
+                  <Link to='/login' className='header-link-desktop'>Login</Link>
+                </Button>
+                <Button sx={{ color: '#fff' }}>
+                  <Link to='/register' className='header-link-desktop'>Register</Link>
+                </Button>
+              </>
+               )}
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton
@@ -248,7 +225,7 @@ function Header(props) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },

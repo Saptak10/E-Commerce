@@ -3,7 +3,7 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { useState } from "react";
 import styled from "styled-components";
-import { sliderItems } from "./data";
+import { sliderItems } from "../../data";
 import { mobile } from ".././responsive";
 
 const Container = styled.div`

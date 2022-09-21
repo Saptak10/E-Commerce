@@ -7,13 +7,14 @@ const User = require('../models/userModel');
 module.exports.registerUser = asyncHandler(async(req,res) => {
     const { name, email, password } = req.body
 
+    console.log('Hello world')
     //If any of the parameters is missing
     
     if(!name || !email || !password){
         res.status(400);
         throw new Error('Please add a text field')
     }
-   
+    
     // Check if the user already exists
 
     const userExists = await User.findOne({email})
@@ -55,6 +56,8 @@ module.exports.registerUser = asyncHandler(async(req,res) => {
 module.exports.loginUser = asyncHandler(async(req,res) => {
     const { email, password } = req.body
 
+    console.log('Hello world')
+
     //Check and find if the user email exists
     const user = await User.findOne({email})
 
@@ -76,13 +79,14 @@ module.exports.loginUser = asyncHandler(async(req,res) => {
 })
 
 module.exports.profileUser = asyncHandler(async(req,res) => {
-    const { _id, name, email } = await User.findById(req.user.id)
+    res.status(200).json(req.user)
+    // const { _id, name, email } = await User.findById(req.user.id)
 
-    res.status(200).json({
-        id: _id,
-        name,
-        email,
-    })
+    // res.status(200).json({
+    //     id: _id,
+    //     name,
+    //     email,
+    // })
     // res.status(200);
     // res.json({ message: 'Profile User' })
 })

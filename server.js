@@ -17,10 +17,13 @@ const schema = require('./schema/schema.js');
 
 const app = express();
 
+const cors = require('cors');
+
 dbConnection();
 
 app.use(express.json())
 app.use(express.urlencoded({ extended : true }))
+app.use(cors());
 
 app.use('/graphql', 
     graphqlHTTP({
@@ -29,9 +32,9 @@ app.use('/graphql',
 }));
 
 app.use('/', userRoute)
-app.use('/', (req, res) => {
-    res.send('API is running...')
-})
+// app.use('/', (req, res) => {
+//     res.send('API is running...')
+// })
 app.use('/api/products', productRoute)
 
 app.use(errorHandler)

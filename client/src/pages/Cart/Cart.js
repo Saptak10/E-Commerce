@@ -1,17 +1,17 @@
-import { useContext, Fragment } from 'react';
-import { CartContext } from '../../context/CartContext';
-import { Link } from 'react-router-dom';
+// import { useContext, Fragment } from 'react';
+// import { CartContext } from '../../context/CartContext';
+// import { Link } from 'react-router-dom';
 
-import CartItem from './CartItem';
+// import CartItem from './CartItem';
 import EmptyCart from './EmptyCart';
 
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+// import Box from '@mui/material/Box';
+// import Container from '@mui/material/Container';
+// import Divider from '@mui/material/Divider';
+// import Typography from '@mui/material/Typography';
+// import Button from '@mui/material/Button';
 
-import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
+// import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 // import GoBackBtn from '../ui/GoBackBtn';
 
 const Cart = () => {

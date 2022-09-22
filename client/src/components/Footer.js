@@ -9,6 +9,7 @@ import { mobile } from "./responsive";
 
 const Container = styled.div`
   display: flex;
+  background-color: #E6E6E6;
   ${mobile({ flexDirection: "column" })}
 `;
 
@@ -56,7 +57,7 @@ const Footer = () => {
   return (
     <Container>
       <Center>
-        <Logo>E-Commerce App</Logo>
+        <Logo>Checkout different products from below</Logo>
         <List>
           <ListItem>Home</ListItem>
           <ListItem>Cart</ListItem>
@@ -86,7 +87,7 @@ const Footer = () => {
             <GitHubIcon />
           </SocialIcon>
         </SocialContainer>
-        <h6>Developed by Saptak Chakraborty © 2022</h6>
+        <h5>Developed by Saptak Chakraborty © 2022</h5>
       </Center>
     </Container>
   );

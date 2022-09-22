@@ -1,10 +1,6 @@
-// import { Add, Remove } from "@material-ui/icons";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import styled from "styled-components";
-// import Announcement from "../components/Announcement";
-// import Footer from "../components/Footer";
-// import Navbar from "../components/Navbar";
 import { mobile } from "../components/responsive";
 
 const Container = styled.div``;

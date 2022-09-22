@@ -9,14 +9,23 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Cart from './pages/Cart';
 import Profile from './pages/Profile';
+import ProductDetailsPage from './pages/ProductDetailsPage';
+import {popularProducts} from './data'
 
 function App() {
+
+  // const productPage = `/${popularProducts[0].name}`;
+  // console.log(productPage)
+
   return (
     <div className="App">
       <Router>
       <Header />
           <Routes>
             <Route path='/' element={<Home />} />
+            {popularProducts.map((item) => (
+              <Route path={item.name} element={<ProductDetailsPage item={item} key={item.id} />} />
+            ))}
             <Route path='/cart' element={<Cart />} />
             <Route path='/address' element={<Cart />} />
             <Route path='/checkout' element={<Cart />} />

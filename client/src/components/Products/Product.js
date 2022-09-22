@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import SearchIcon from '@mui/icons-material/Search';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link } from "react-router-dom";
+import InfoIcon from '@mui/icons-material/Info';
 
 const Info = styled.div`
     opacity: 0;
@@ -81,6 +81,9 @@ const Icon = styled.div`
 `;
 
 const Product = ({ item }) => {
+
+    const route = `/${item.name}`;
+
 return (
     <div>
     <Container>
@@ -90,15 +93,17 @@ return (
         <Icon>
             <AddShoppingCartIcon />
         </Icon>
-        <Icon>
-            <Link to='/'><SearchIcon /></Link>
-        </Icon>
+        <Link to={route}>
+            <Icon>
+                <InfoIcon />
+            </Icon>
+        </Link>
         <Icon>
             <FavoriteBorderIcon />
         </Icon>
     </Info>
     </Container>
-    <PriceBox>5 Star rating</PriceBox>
+    <PriceBox>{item.name}</PriceBox>
     <PriceBox>Rs {item.price}</PriceBox>
     </div>
 );

@@ -33,7 +33,7 @@ app.use('/graphql',
 
 app.use('/', userRoute)
 app.use('/', (req, res) => {
-    res.send('Backend API Server is running...')
+    res.send('Shoshi sexy hai...')
 })
 app.use('/api/products', productRoute)
 

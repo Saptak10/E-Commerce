@@ -124,6 +124,7 @@ const Summary = styled.div`
   border-radius: 10px;
   padding: 20px;
   height: 50vh;
+  // ${mobile({ width: 'auto' })}
 `;
 
 const SummaryTitle = styled.h1`

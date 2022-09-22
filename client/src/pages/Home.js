@@ -3,25 +3,25 @@ import Categories from "../components/Categories/Categories";
 // import Navbar from "../components/Navbar";
 // import Newsletter from "../components/Newsletter";
 
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+// import { useEffect } from 'react'
+// import { useNavigate } from 'react-router-dom'
+// import { useSelector } from 'react-redux'
 
 import Products from "../components/Products/Products";
 // import Slider from "../components/Slider/Slider";
 
 const Home = () => {
-  const navigate = useNavigate()
+//   const navigate = useNavigate()
 
-  const { user } = useSelector((state) => state.user)
+//   const { user } = useSelector((state) => state.user)
 
-  useEffect(() => {
+//   useEffect(() => {
 
-    if (!user) {
-      navigate('/login')
-    }
+//     if (!user) {
+//       navigate('/login')
+//     }
 
-  }, [user, navigate])
+//   }, [user, navigate])
 
   return (
     <div>

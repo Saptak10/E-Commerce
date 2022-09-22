@@ -2,7 +2,8 @@ import styled from "styled-components";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SearchIcon from '@mui/icons-material/Search';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-  
+import { Link } from "react-router-dom";
+
 const Info = styled.div`
     opacity: 0;
     width: 100%;
@@ -34,7 +35,7 @@ const Container = styled.div`
     }
 `;
 
-const PriceBox = styled.div`
+const PriceBox = styled.h3`
     flex: 1;
     margin: 5px;
     min-width: 280px;
@@ -87,17 +88,18 @@ return (
     <Image src={item.img} />
     <Info>
         <Icon>
-        <AddShoppingCartIcon />
+            <AddShoppingCartIcon />
         </Icon>
         <Icon>
-        <SearchIcon />
+            <Link to='/'><SearchIcon /></Link>
         </Icon>
         <Icon>
-        <FavoriteBorderIcon />
+            <FavoriteBorderIcon />
         </Icon>
     </Info>
     </Container>
-    <PriceBox><b>Price:</b>{item.price}</PriceBox>
+    <PriceBox>5 Star rating</PriceBox>
+    <PriceBox>Rs {item.price}</PriceBox>
     </div>
 );
 };

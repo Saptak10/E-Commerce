@@ -86,7 +86,7 @@ const Footer = () => {
             <GitHubIcon />
           </SocialIcon>
         </SocialContainer>
-        <h3>Developed by Saptak Chakraborty © 2022</h3>
+        <h6>Developed by Saptak Chakraborty © 2022</h6>
       </Center>
     </Container>
   );

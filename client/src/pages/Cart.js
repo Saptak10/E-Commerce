@@ -158,7 +158,7 @@ const Cart = () => {
   const[count,setCount] = useState(1);
   const[count2,setCount2] = useState(1);
 
-  const[total,setTotal] = useState(0);
+  // const[total,setTotal] = useState(0);
 
   const itemCount = 2;
 

@@ -26,7 +26,6 @@ function Header(props) {
   const dispatch = useDispatch()
 
   const { user } = useSelector((state) => state.user)
-  // console.log(user)
 
   const onLogout = () => {
     dispatch(logout())
@@ -70,6 +69,7 @@ function Header(props) {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}><Link to='/profile' className='header-link-mobile'>Profile</Link></MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link to='/account' className='header-link-mobile'>My account</Link></MenuItem>
     </Menu>
   );
 
@@ -90,7 +90,6 @@ function Header(props) {
           {user ? (
             <ListItem>
               <ListItemButton>
-              {/* <Link onClick={onLogout} className='header-link-mobile'> */}
               <div onClick={onLogout} className='header-link-mobile'>
                 <ListItemText primary='Logout' sx={{ color: 'black' }}/>
               </div>

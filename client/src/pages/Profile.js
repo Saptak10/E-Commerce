@@ -1,73 +1,74 @@
-// import { useState, useEffect } from 'react'
-// import { useSelector, useDispatch } from 'react-redux'
-// import { useNavigate } from 'react-router-dom'
-// import { toast } from 'react-toastify'
-// import { register, reset } from '../features/user/userSlice'
-// import Spinner from '../components/Spinner'
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { register, reset } from '../features/user/userSlice'
+import Spinner from '../components/Spinner/Spinner'
 
 function Profile() {
-  // const [formData, setFormData] = useState({
-  //   name: '',
-  //   email: '',
-  //   age: '',
-  //   gender: '',
-  //   dob: '',
-  //   mobile: 0,
-  //   password: '',
-  //   password2: '',
-  // })
+  
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    age: '',
+    gender: '',
+    dob: '',
+    mobile: 0,
+    password: '',
+    password2: '',
+  })
 
-  // const { name, email, age, gender, dob, mobile, password, password2 } = formData
+  const { name, email, age, gender, dob, mobile, password, password2 } = formData
 
-  // const navigate = useNavigate()
-  // const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-  // const { user, isLoading, isError, message } = useSelector(
-  //   (state) => state.user
-  // )
+  const { user, isLoading, isError, message } = useSelector(
+    (state) => state.user
+  )
 
-  // useEffect(() => {
-  //   if (isError) {
-  //     toast.error(message)
-  //   }
+  useEffect(() => {
+    if (isError) {
+      toast.error(message)
+    }
 
-  //   if (!user) {
-  //     navigate('/login')
-  //   }
+    if (!user) {
+      navigate('/login')
+    }
 
-  //   dispatch(reset())
-  // }, [user, isError, message, navigate, dispatch])
+    dispatch(reset())
+  }, [user, isError, message, navigate, dispatch])
 
-  // const onChange = (e) => {
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     [e.target.name]: e.target.value,
-  //   }))
-  // }
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
+  }
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault()
+  const onSubmit = (e) => {
+    e.preventDefault()
 
-  //   if (password !== password2) {
-  //     toast.error('Passwords do not match')
-  //   } else {
-  //     const userData = {
-  //       name,
-  //       email,
-  //       age,
-  //       gender,
-  //       dob,
-  //       mobile,
-  //       password,
-  //     }
+    if (password !== password2) {
+      toast.error('Passwords do not match')
+    } else {
+      const userData = {
+        name,
+        email,
+        age,
+        gender,
+        dob,
+        mobile,
+        password,
+      }
 
-  //     dispatch(register(userData))
-  //   }
-  // }
+      dispatch(register(userData))
+    }
+  }
 
-  // if (isLoading) {
-  //   return <Spinner />
-  // }
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <>
@@ -77,7 +78,7 @@ function Profile() {
         </h1>
       </section>
 
-      {/* <section className='form'>
+      <section className='form'>
         <form onSubmit={onSubmit}>
           <div className='form-group'>
             <input
@@ -173,7 +174,7 @@ function Profile() {
             </button>
           </div>
         </form>
-      </section> */}
+      </section>
     </>
   )
 }

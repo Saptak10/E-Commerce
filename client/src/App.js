@@ -11,11 +11,11 @@ import Cart from './pages/Cart';
 import Profile from './pages/Profile';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import {popularProducts} from './data'
+import { ShippingAddress } from './pages/ShippingAddress';
+import Account from './pages/Account';
+import Payment from './pages/Payment';
 
 function App() {
-
-  // const productPage = `/${popularProducts[0].name}`;
-  // console.log(productPage)
 
   return (
     <div className="App">
@@ -27,7 +27,9 @@ function App() {
               <Route path={item.name} element={<ProductDetailsPage item={item} key={item.id} />} />
             ))}
             <Route path='/cart' element={<Cart />} />
-            <Route path='/address' element={<Cart />} />
+            <Route path='/address' element={<ShippingAddress />} />
+            <Route path='/account' element={<Account />} />
+            <Route path='/payment' element={<Payment />} />
             <Route path='/checkout' element={<Cart />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/login' element={<Login />} />

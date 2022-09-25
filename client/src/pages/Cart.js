@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import { mobile } from "../components/responsive";
 
@@ -152,6 +154,16 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+
+  const[count,setCount] = useState(1);
+  const[count2,setCount2] = useState(1);
+
+  const[total,setTotal] = useState(0);
+
+  const itemCount = 2;
+
+  // setTotal(30*count+20*count2 + 40);
+
   return (
     <Container>
       {/* <Navbar />
@@ -161,10 +173,10 @@ const Cart = () => {
         <Top>
           <TopButton>CONTINUE SHOPPING</TopButton>
           <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
+            <TopText>Shopping Bag ({itemCount})</TopText>
             <TopText>Your Wishlist (0)</TopText>
           </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
+          <TopButton type="filled"><Link to='/address' className='header-link-desktop'>CHECKOUT NOW</Link></TopButton>
         </Top>
         <Bottom>
           <Info>
@@ -186,11 +198,11 @@ const Cart = () => {
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <AddIcon />
-                  <ProductAmount>2</ProductAmount>
-                  <RemoveIcon />
+                  <RemoveIcon onClick={() => setCount(count - 1)}/>
+                  <ProductAmount>{count}</ProductAmount>
+                  <AddIcon onClick={() => setCount(count + 1)}/>
                 </ProductAmountContainer>
-                <ProductPrice>$ 30</ProductPrice>
+                <ProductPrice>RS {30*count}</ProductPrice>
               </PriceDetail>
             </Product>
             <Hr />
@@ -212,11 +224,11 @@ const Cart = () => {
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <AddIcon />
-                  <ProductAmount>1</ProductAmount>
-                  <RemoveIcon />
+                  <RemoveIcon onClick={() => setCount2(count2 - 1)}/>
+                  <ProductAmount>{count2}</ProductAmount>
+                  <AddIcon onClick={() => setCount2(count2 + 1)}/>
                 </ProductAmountContainer>
-                <ProductPrice>$ 20</ProductPrice>
+                <ProductPrice>Rs {20*count2}</ProductPrice>
               </PriceDetail>
             </Product>
           </Info>
@@ -224,21 +236,21 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>Rs {30*count+20*count2}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
-              <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
+              <SummaryItemText>Shipping Charge</SummaryItemText>
+              <SummaryItemPrice>Rs 40</SummaryItemPrice>
             </SummaryItem>
-            <SummaryItem>
+            {/* <SummaryItem>
               <SummaryItemText>Shipping Discount</SummaryItemText>
               <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-            </SummaryItem>
+            </SummaryItem> */}
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>Rs {30*count+20*count2 + 40}</SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+            <Button><Link className='header-link-desktop' to='/address'>CHECKOUT NOW</Link></Button>
           </Summary>
         </Bottom>
       </Wrapper>

@@ -76,7 +76,7 @@ function Header(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Ebuy-World App
+        EBuy World
       </Typography>
       <Divider />
       <List>
@@ -138,7 +138,7 @@ function Header(props) {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            <Link to='/' className='header-link-desktop'>Ebuy-World App</Link>
+            <Link to='/' className='header-link-desktop'>EBuy World</Link>
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Search>

@@ -28,7 +28,7 @@ const Home = () => {
       {/* <Announcement /> */}
       {/* <Navbar /> */}
       {/* <Slider />*/}
-      <h1>E-Commerce App</h1>
+      <h1>Ebuy-World App</h1>
       <Categories /> 
       <Products/>
       {/* <Newsletter/> */}

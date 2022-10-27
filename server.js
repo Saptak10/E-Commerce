@@ -28,9 +28,9 @@ app.use('/graphql',
 }));
 
 app.use('/', userRoute)
-app.use('/', (req, res) => {
-    res.send('Backend API Server is running...')
-})
+// app.use('/', (req, res) => {
+//     res.send('Backend API Server is running...')
+// })
 app.use('/api/products', productRoute)
 
 if (process.env.NODE_ENV === "production") {
@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === "production") {
     )
     );
 } else {
-    app.get('/', (req, res) => res.send('Please set to production'));
+    app.get('/', (req, res) => res.send('Backend API Server is running...'));
 }
 
 app.use(errorHandler)

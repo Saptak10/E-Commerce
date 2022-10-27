@@ -1,10 +1,6 @@
-if (process.env.NODE_ENV !== "production") {
-    require('dotenv').config();
-}
-
-const express = require('express');
 const path = require('path');
-const dotenv = require('dotenv');
+const express = require('express');
+const dotenv = require('dotenv').config();;
 const { graphqlHTTP } = require('express-graphql');
 
 const dbConnection = require('./config/dbConnection');
@@ -36,6 +32,18 @@ app.use('/', (req, res) => {
     res.send('Backend API Server is running...')
 })
 app.use('/api/products', productRoute)
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, './client/build')));
+
+    app.get('*', (req, res) =>
+    res.sendFile(
+    path.resolve(__dirname, './', 'client', 'build', 'index.html')
+    )
+    );
+} else {
+    app.get('/', (req, res) => res.send('Please set to production'));
+}
 
 app.use(errorHandler)
 

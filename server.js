@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const dotenv = require('dotenv').config();;
+// const dotenv = require('dotenv').config();
 const { graphqlHTTP } = require('express-graphql');
 
 const dbConnection = require('./config/dbConnection');
@@ -33,16 +33,17 @@ app.use('/', userRoute)
 // })
 app.use('/api/products', productRoute)
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, './client/build')));
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+//     app.use(express.static(path.join(__dirname, './client/build')));
 
-    app.get('*', (req, res) =>
-    res.sendFile(
-    path.resolve(__dirname, './', 'client', 'build', 'index.html')
-    )
-    );
-} else {
-    app.get('/', (req, res) => res.send('Backend API Server is running...'));
+//     app.get('*', (req, res) =>
+//     res.sendFile(
+//     path.resolve(__dirname, './', 'client', 'build', 'index.html')
+//     )
+//     );
+// } else {
+//     app.get('/', (req, res) => res.send('Backend API Server is running...'));
 }
 
 app.use(errorHandler)

@@ -3,7 +3,9 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import styled from "styled-components";
 import { mobile } from "../components/responsive";
 
-const Container = styled.div``;
+const Container = styled.div`
+text-align: left;
+`;
 
 const Wrapper = styled.div`
   padding: 50px;
@@ -34,9 +36,10 @@ const Title = styled.h1`
 
 const Desc = styled.p`
   margin: 20px 0px;
+  
 `;
 
-const Price = styled.span`
+const Price = styled.div`
   font-weight: 100;
   font-size: 40px;
 `;
@@ -116,17 +119,12 @@ const ProductDetailsPage = ({ item }) => {
         <Container>
             <Wrapper>
                 <ImgContainer>
-                <Image src={item.img} />
+                <Image src={item.image} />
                 </ImgContainer>
                 <InfoContainer>
                 <Title>{item.name}</Title>
-                <Desc>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                    venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-                    iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-                    tristique tortor pretium ut. Curabitur elit justo, consequat id
-                    condimentum ac, volutpat ornare.
-                </Desc>
+                <Desc>5 Star | 20 Reviews</Desc>
+                <Desc>{item.description}</Desc>
                 <Price>Rs {item.price}</Price>
                 <FilterContainer>
                     <Filter>

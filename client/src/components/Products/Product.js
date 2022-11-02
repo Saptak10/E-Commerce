@@ -47,8 +47,6 @@ const Details = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
-    // border: 2px solid #ace3f5;
-    // border-radius: 5px;
     padding-bottom: 20px;
     &:hover ${Info}{
         opacity: 1;
@@ -98,6 +96,16 @@ const Icon = styled.div`
     }
 `;
 
+const RateBox = styled.h3`
+    font-size: 15px;
+    opacity: 0.5;
+    margin-left: 5px;
+    padding: 5px;
+    background: #ace3f5;
+    border: 2px solid #ace3f5;
+    border-radius: 5px;
+`;
+
 const Product = ({ item }) => {
 
     const divStyles = {
@@ -106,7 +114,7 @@ const Product = ({ item }) => {
         margin: '1em',
       };
 
-    const route = `/${item.name}`;
+    const route = `product/${item._id}`;
 
 return (
     <div style={divStyles}>
@@ -129,7 +137,7 @@ return (
     </Container>
     <Details>
         <PriceBox>{item.name}</PriceBox>
-        <PriceBox>Rs {item.price}</PriceBox>
+        <PriceBox>Rs {item.price} <RateBox > {item.rating} from {item.numReviews} reviews</RateBox></PriceBox>
     </Details>
     </div>
 );

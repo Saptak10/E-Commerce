@@ -10,10 +10,12 @@ import Register from './pages/Register';
 import Cart from './pages/Cart';
 import Profile from './pages/Profile';
 import ProductDetailsPage from './pages/ProductDetailsPage';
-import {popularProducts} from './data'
 import { ShippingAddress } from './pages/ShippingAddress';
 import Account from './pages/Account';
 import Payment from './pages/Payment';
+
+// import {popularProducts} from './data'
+import products from "./productsData";
 
 function App() {
 
@@ -23,8 +25,8 @@ function App() {
       <Header />
           <Routes>
             <Route path='/' element={<Home />} />
-            {popularProducts.map((item) => (
-              <Route path={item.name} element={<ProductDetailsPage item={item} key={item.id} />} />
+            {products.map((item) => (
+              <Route path={'product/'+item._id} element={<ProductDetailsPage item={item} key={item.id} />} />
             ))}
             <Route path='/cart' element={<Cart />} />
             <Route path='/address' element={<ShippingAddress />} />

@@ -1,18 +1,19 @@
 import styled from "styled-components";
-import { popularProducts } from "../../data";
+// import { popularProducts } from "../../data";
 import Product from "./Product";
 
 const Container = styled.div`
     padding: 20px;
+    margin-left: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 `;
 
-const Products = () => {
+const Products = ({products}) => {
   return (
     <Container>
-      {popularProducts.map((item) => (
+      {products.map((item) => (
         <Product item={item} key={item.id} />
       ))}
     </Container>

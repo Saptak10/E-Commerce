@@ -1,4 +1,5 @@
 import Categories from "../components/Categories/Categories";
+import Products from "../components/Products/Products";
 // import Footer from "../components/Footer";
 // import Navbar from "../components/Navbar";
 // import Newsletter from "../components/Newsletter";
@@ -7,8 +8,9 @@ import Categories from "../components/Categories/Categories";
 // import { useNavigate } from 'react-router-dom'
 // import { useSelector } from 'react-redux'
 
-import Products from "../components/Products/Products";
 // import Slider from "../components/Slider/Slider";
+
+import products from '../productsData'
 
 const Home = () => {
 //   const navigate = useNavigate()
@@ -30,7 +32,7 @@ const Home = () => {
       {/* <Slider />*/}
       <h1>EBuy World</h1>
       <Categories /> 
-      <Products/>
+      <Products products={products}/>
       {/* <Newsletter/> */}
       {/* <Footer/> */}
     </div>

@@ -112,7 +112,7 @@ return (
     <div style={divStyles}>
     <Container>
     <Circle />
-    <Image src={item.img} />
+    <Image src={item.image} />
     <Info>
         <Icon>
             <AddShoppingCartIcon />

@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   flex: 1;
-  margin: 3px;
+  margin: 7px;
   height: 70vh;
   position: relative;
 `;
@@ -12,6 +13,7 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 10px;
   ${mobile({ height: "20vh" })}
 `;
 
@@ -33,21 +35,31 @@ const Title = styled.h1`
 `;
 
 const Button = styled.button`
-    border:none;
-    padding: 10px;
-    background-color: white;
-    color:gray;
-    cursor: pointer;
-    font-weight: 600;
+  background: "white";
+  color: ${props => props.primary ? "grey" : "white"};
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 1px solid white;
+  border-radius: 3px;
 `;
 
 const CategoryItem = ({ item }) => {
+  const divStyles = {
+    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+  };
+
+  const linkStyle = {
+    textDecoration: 'none',
+    color: 'grey',
+  };
+  
   return (
     <Container>
       <Image src={item.img} />
       <Info>
         <Title>{item.title}</Title>
-        <Button>SHOP NOW</Button>
+        <Button style={divStyles} primary><Link style={linkStyle} to={item.title}>SHOP NOW</Link></Button>
       </Info>
     </Container>
   );

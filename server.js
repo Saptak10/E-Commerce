@@ -9,9 +9,25 @@ const errorHandler = require('./middleware/errorMiddleware')
 const userRoute = require('./route/userRoutes');
 const productRoute = require('./route/productRoutes');
 
+// import orderRoutes from './routes/orderRoutes.js'
+// import uploadRoutes from './routes/uploadRoutes.js'
+
 const schema = require('./schema/schema.js');
 
 const app = express();
+
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+//     app.use(express.static(path.join(__dirname, './client/build')));
+
+//     app.get('*', (req, res) =>
+//     res.sendFile(
+//     path.resolve(__dirname, './', 'client', 'build', 'index.html')
+//     )
+//     );
+// } else {
+//     app.get('/', (req, res) => res.send('Backend API Server is running...'));
+}
 
 const cors = require('cors');
 
@@ -27,24 +43,12 @@ app.use('/graphql',
     graphiql : process.env.NODE_ENV === 'development',
 }));
 
+// app.use('/', (req, res) => {
+//     res.send('Backend API Server is running...')
+// })
 app.use('/', userRoute)
-app.use('/', (req, res) => {
-    res.send('Backend API Server is running...')
-})
-app.use('/api/products', productRoute)
+app.use('/products', productRoute)
 
-if (process.env.NODE_ENV !== "production") {
-    require('dotenv').config();
-//     app.use(express.static(path.join(__dirname, './client/build')));
-
-//     app.get('*', (req, res) =>
-//     res.sendFile(
-//     path.resolve(__dirname, './', 'client', 'build', 'index.html')
-//     )
-//     );
-// } else {
-//     app.get('/', (req, res) => res.send('Backend API Server is running...'));
-}
 
 app.use(errorHandler)
 

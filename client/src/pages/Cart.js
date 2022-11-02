@@ -32,6 +32,7 @@ const TopButton = styled.button`
   background-color: ${(props) =>
     props.type === "filled" ? "black" : "transparent"};
   color: ${(props) => props.type === "filled" && "white"};
+  border-radius: 5px;
 `;
 
 const TopTexts = styled.div`
@@ -151,6 +152,7 @@ const Button = styled.button`
   background-color: black;
   color: white;
   font-weight: 600;
+  border-radius: 5px;
 `;
 
 const Cart = () => {
@@ -242,10 +244,6 @@ const Cart = () => {
               <SummaryItemText>Shipping Charge</SummaryItemText>
               <SummaryItemPrice>Rs 40</SummaryItemPrice>
             </SummaryItem>
-            {/* <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-            </SummaryItem> */}
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>Rs {30*count+20*count2 + 40}</SummaryItemPrice>

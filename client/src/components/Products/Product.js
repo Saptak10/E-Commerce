@@ -3,6 +3,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link } from "react-router-dom";
 import InfoIcon from '@mui/icons-material/Info';
+import { borderRadius } from "@mui/system";
 
 const Info = styled.div`
     opacity: 0;
@@ -18,18 +19,37 @@ const Info = styled.div`
     justify-content: center;
     transition: all 0.5s ease;
     cursor: pointer;
+    border-radius: 10px;
 `;
 
 const Container = styled.div`
     flex: 1;
     margin: 5px;
     min-width: 280px;
-    height: 350px;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #f5fbfd;
     position: relative;
+    border: 2px solid #f5fbfd;
+    border-radius: 10px;
+    &:hover ${Info}{
+        opacity: 1;
+    }
+`;
+
+const Details = styled.div`
+    flex: 1;
+    margin: 5px;
+    min-width: 280px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    // border: 2px solid #ace3f5;
+    // border-radius: 5px;
+    padding-bottom: 20px;
     &:hover ${Info}{
         opacity: 1;
     }
@@ -43,9 +63,7 @@ const PriceBox = styled.h3`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #99ff99;
     position: relative;
-    border-radius: 10px;
     &:hover ${Info}{
         opacity: 1;
     }
@@ -82,10 +100,16 @@ const Icon = styled.div`
 
 const Product = ({ item }) => {
 
+    const divStyles = {
+        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+        borderRadius: 10,
+        margin: '1em',
+      };
+
     const route = `/${item.name}`;
 
 return (
-    <div>
+    <div style={divStyles}>
     <Container>
     <Circle />
     <Image src={item.img} />
@@ -103,8 +127,10 @@ return (
         </Icon>
     </Info>
     </Container>
-    <PriceBox>{item.name}</PriceBox>
-    <PriceBox>Rs {item.price}</PriceBox>
+    <Details>
+        <PriceBox>{item.name}</PriceBox>
+        <PriceBox>Rs {item.price}</PriceBox>
+    </Details>
     </div>
 );
 };

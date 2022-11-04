@@ -155,6 +155,7 @@ const Button = styled.button`
   border-radius: 5px;
 `;
 
+
 const Cart = () => {
 
   const[count,setCount] = useState(1);

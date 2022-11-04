@@ -1,6 +1,9 @@
 import styled from "styled-components";
 // import { popularProducts } from "../../data";
 import Product from "./Product";
+// import products from '../../productsData'
+import { useEffect, useState } from "react";
+import axios from 'axios'
 
 const Container = styled.div`
     padding: 20px;
@@ -10,10 +13,28 @@ const Container = styled.div`
     justify-content: space-evenly;
 `;
 
-const Products = ({products}) => {
+const Products = () => {
+
+  const [allProducts, setAllProducts] = useState([])
+
+  useEffect(() => {
+    const fetchProducts = async() => {
+      const { data } = await axios.get('http://localhost:5000/products')
+
+      setAllProducts(data)
+
+      console.log("hello")
+    }
+
+    fetchProducts()
+
+    console.log("hello")
+
+  }, [])
+
   return (
     <Container>
-      {products.map((item) => (
+      {allProducts.map((item) => (
         <Product item={item} key={item.id} />
       ))}
     </Container>

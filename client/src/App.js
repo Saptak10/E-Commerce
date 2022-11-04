@@ -7,17 +7,32 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Cart from './pages/Cart';
+import Cart from './pages/Cart/Cart';
 import Profile from './pages/Profile';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import { ShippingAddress } from './pages/ShippingAddress';
 import Account from './pages/Account';
 import Payment from './pages/Payment';
+import axios from 'axios'
 
-// import {popularProducts} from './data'
-import products from "./productsData";
+// import products from "./productsData";
+
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const [products, setAllProducts] = useState([])
+
+  useEffect(() => {
+    const fetchProduct = async() => {
+      const { data } = await axios.get(`http://localhost:5000/products`)
+
+      setAllProducts(data)
+    }
+
+    fetchProduct()
+  }, [])
+
 
   return (
     <div className="App">

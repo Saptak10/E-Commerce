@@ -4,7 +4,7 @@ import Product from "./Product";
 
 const Container = styled.div`
     padding: 20px;
-    margin-left: 20px;
+    margin-left: 5px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;

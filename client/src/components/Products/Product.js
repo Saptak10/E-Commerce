@@ -3,7 +3,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link } from "react-router-dom";
 import InfoIcon from '@mui/icons-material/Info';
-import { borderRadius } from "@mui/system";
+import Rating from "./Rating";
 
 const Info = styled.div`
     opacity: 0;
@@ -96,16 +96,6 @@ const Icon = styled.div`
     }
 `;
 
-const RateBox = styled.h3`
-    font-size: 15px;
-    opacity: 0.5;
-    margin-left: 5px;
-    padding: 5px;
-    background: #ace3f5;
-    border: 2px solid #ace3f5;
-    border-radius: 5px;
-`;
-
 const Product = ({ item }) => {
 
     const divStyles = {
@@ -137,7 +127,7 @@ return (
     </Container>
     <Details>
         <PriceBox>{item.name}</PriceBox>
-        <PriceBox>Rs {item.price} <RateBox > {item.rating} from {item.numReviews} reviews</RateBox></PriceBox>
+        <PriceBox>Rs {item.price} <Rating value={item.rating} text={` | ${item.numReviews}`} /></PriceBox>
     </Details>
     </div>
 );

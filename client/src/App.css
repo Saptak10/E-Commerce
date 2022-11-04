@@ -103,3 +103,7 @@
     transform: rotate(360deg);
   }
 }
+
+.rating span {
+  margin: 0.1rem;
+}

@@ -121,7 +121,7 @@ function Header(props) {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <AppBar position="static">
+      <AppBar position="static" sx = {{background: 'teal'}}>
         <Toolbar>
           <IconButton
             color="inherit"

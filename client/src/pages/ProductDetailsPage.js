@@ -3,6 +3,15 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import styled from "styled-components";
 import { mobile } from "../components/responsive";
 
+import {useState } from 'react';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+
+import Button from '@mui/material/Button';
+import Rating from '../components/Products/Rating';
+
 const Container = styled.div`
 text-align: left;
 `;
@@ -15,6 +24,8 @@ const Wrapper = styled.div`
 
 const ImgContainer = styled.div`
   flex: 1;
+  border: 2px solid #f5fbfd;
+  border-radius: 10px;
 `;
 
 const Image = styled.img`
@@ -36,7 +47,6 @@ const Title = styled.h1`
 
 const Desc = styled.p`
   margin: 20px 0px;
-  
 `;
 
 const Price = styled.div`
@@ -71,13 +81,6 @@ const FilterColor = styled.div`
   cursor: pointer;
 `;
 
-const FilterSize = styled.select`
-  margin-left: 10px;
-  padding: 5px;
-`;
-
-const FilterSizeOption = styled.option``;
-
 const AddContainer = styled.div`
   width: 50%;
   display: flex;
@@ -103,18 +106,15 @@ const Amount = styled.span`
   margin: 0px 5px;
 `;
 
-const Button = styled.button`
-  padding: 15px;
-  border: 2px solid teal;
-  background-color: white;
-  cursor: pointer;
-  font-weight: 500;
-  &:hover{
-      background-color: #f8f4f4;
-  }
-`;
-
 const ProductDetailsPage = ({ item }) => {
+
+  const [size, setSize] = useState('');
+  const[count,setCount] = useState(1);
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setSize(event.target.value);
+  };
+  
   return (
         <Container>
             <Wrapper>
@@ -123,7 +123,8 @@ const ProductDetailsPage = ({ item }) => {
                 </ImgContainer>
                 <InfoContainer>
                 <Title>{item.name}</Title>
-                <Desc>5 Star | 20 Reviews</Desc>
+                {/* <Desc>5 Star | 20 Reviews</Desc> */}
+                <Desc><Rating value={item.rating} text={` | ${item.numReviews}`}/></Desc>
                 <Desc>{item.description}</Desc>
                 <Price>Rs {item.price}</Price>
                 <FilterContainer>
@@ -133,24 +134,31 @@ const ProductDetailsPage = ({ item }) => {
                     <FilterColor color="darkblue" />
                     <FilterColor color="gray" />
                     </Filter>
-                    <Filter>
-                    <FilterTitle>Size</FilterTitle>
-                    <FilterSize>
-                        <FilterSizeOption>XS</FilterSizeOption>
-                        <FilterSizeOption>S</FilterSizeOption>
-                        <FilterSizeOption>M</FilterSizeOption>
-                        <FilterSizeOption>L</FilterSizeOption>
-                        <FilterSizeOption>XL</FilterSizeOption>
-                    </FilterSize>
-                    </Filter>
+                    <FormControl sx={{ m: 1, minWidth: 80 }}>
+                      <InputLabel id="demo-simple-select-filled-label">Size</InputLabel>
+                      <Select
+                        labelId="demo-simple-select-filled-label"
+                        id="demo-simple-select-filled"
+                        value={size}
+                        onChange={handleChange}
+                        // autoWidth
+                        label="Size"
+                      >
+                        <MenuItem value='S'>S</MenuItem>
+                        <MenuItem value='M'>M</MenuItem>
+                        <MenuItem value='L'>L</MenuItem>
+                        <MenuItem value='XL'>XL</MenuItem>
+                      </Select>
+                    </FormControl>
                 </FilterContainer>
                 <AddContainer>
                     <AmountContainer>
-                    <RemoveIcon />
-                    <Amount>1</Amount>
-                    <AddIcon />
+                    <RemoveIcon onClick={() => setCount(count - 1)}/>
+                      <Amount>{count}</Amount>
+                    <AddIcon onClick={() => setCount(count + 1)}/>
                     </AmountContainer>
-                    <Button>ADD TO CART</Button>
+                    {/* <Button>ADD TO CART</Button> */}
+                    <Button variant="contained">ADD TO CART</Button>
                 </AddContainer>
                 </InfoContainer>
             </Wrapper>

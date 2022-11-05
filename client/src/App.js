@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     const fetchProduct = async() => {
-      const { data } = await axios.get(`http://localhost:5000/products`)
+      const { data } = await axios.get(`https://saptak-e-commerce.herokuapp.com/products`)
 
       setAllProducts(data)
     }

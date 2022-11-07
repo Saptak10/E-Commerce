@@ -74,16 +74,17 @@ export const Details = styled.div`
 
 export const ProductName = styled.span``;
 
-export const ProductId = styled.span``;
-
 export const ProductColor = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  margin-left: 10px;
   background-color: ${(props) => props.color};
 `;
 
-export const ProductSize = styled.span``;
+export const ProductSize = styled.span`
+display: flex;
+`;
 
 export const PriceDetail = styled.div`
   flex: 1;
@@ -108,7 +109,7 @@ export const ProductAmount = styled.div`
 export const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
-  ${mobile({ marginBottom: "20px" })}
+  margin-left: 20px;
 `;
 
 export const Hr = styled.hr`
@@ -148,5 +149,16 @@ export const Button = styled.button`
   background-color: black;
   color: white;
   font-weight: 600;
+  border-radius: 5px;
+`;
+
+export const Quantity = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  background: #E6E6E6;
+  border: 1px solid lightgray;
   border-radius: 5px;
 `;

@@ -4,7 +4,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { Link } from 'react-router-dom';
 // import { mobile } from "../../components/responsive";
 import {Container, Wrapper, Title, Top, TopButton, TopTexts, TopText, Bottom,Info, 
-  Product, ProductDetail, Image, Details, ProductName, ProductId, ProductColor, 
+  Product, ProductDetail, Image, Details, ProductName, Quantity, ProductColor, 
   ProductSize, PriceDetail, ProductAmountContainer, ProductAmount, ProductPrice, Hr, 
   Summary, SummaryTitle, SummaryItem, SummaryItemText, SummaryItemPrice, Button } from "./CartStyle"
 
@@ -40,24 +40,23 @@ const Cart = () => {
                 <Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
                 <Details>
                   <ProductName>
-                    <b>Product:</b> JESSIE THUNDER SHOES
+                    <b>Nike AIR</b> 
                   </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 93813718293
-                  </ProductId>
-                  <ProductColor color="black" />
                   <ProductSize>
-                    <b>Size:</b> 37.5
+                    <b>Size 37.5</b>
+                    <ProductColor color="black" />
                   </ProductSize>
                 </Details>
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <RemoveIcon onClick={() => setCount(count - 1)}/>
-                  <ProductAmount>{count}</ProductAmount>
-                  <AddIcon onClick={() => setCount(count + 1)}/>
+                  <Quantity>
+                    <RemoveIcon onClick={() => setCount(count - 1)}/>
+                    <ProductAmount>{count}</ProductAmount>
+                    <AddIcon onClick={() => setCount(count + 1)}/>
+                  </Quantity>
+                  <ProductPrice>RS {30*count}</ProductPrice>
                 </ProductAmountContainer>
-                <ProductPrice>RS {30*count}</ProductPrice>
               </PriceDetail>
             </Product>
             <Hr />
@@ -66,24 +65,23 @@ const Cart = () => {
                 <Image src="https://i.pinimg.com/originals/2d/af/f8/2daff8e0823e51dd752704a47d5b795c.png" />
                 <Details>
                   <ProductName>
-                    <b>Product:</b> HAKURA T-SHIRT
+                    <b>Van Huesen</b>
                   </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 93813718293
-                  </ProductId>
-                  <ProductColor color="gray" />
                   <ProductSize>
-                    <b>Size:</b> M
+                    <b>Size M</b>
+                    <ProductColor color="gray" />
                   </ProductSize>
                 </Details>
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <RemoveIcon onClick={() => setCount2(count2 - 1)}/>
-                  <ProductAmount>{count2}</ProductAmount>
-                  <AddIcon onClick={() => setCount2(count2 + 1)}/>
+                  <Quantity>
+                    <RemoveIcon onClick={() => setCount2(count2 - 1)}/>
+                    <ProductAmount>{count2}</ProductAmount>
+                    <AddIcon onClick={() => setCount2(count2 + 1)}/>
+                  </Quantity>
+                  <ProductPrice>Rs {20*count2}</ProductPrice>
                 </ProductAmountContainer>
-                <ProductPrice>Rs {20*count2}</ProductPrice>
               </PriceDetail>
             </Product>
           </Info>

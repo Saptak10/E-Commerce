@@ -18,7 +18,7 @@ import axios from 'axios'
 // import products from "./productsData";
 
 import { useEffect, useState } from 'react';
-import PageNotFound from './pages/PageNotFound';
+// import PageNotFound from './pages/PageNotFound';
 
 function App() {
 
@@ -52,7 +52,7 @@ function App() {
             <Route path='/profile' element={<Profile />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route element={<PageNotFound />} />
+            {/* <Route element={<PageNotFound />} /> */}
           </Routes>
           {/* <PageNotFound /> */}
       <Footer />

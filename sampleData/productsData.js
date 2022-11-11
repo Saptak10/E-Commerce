@@ -1,6 +1,6 @@
 const products = [
   {
-    _id: '1',
+    // _id: '1',
     name: 'Apple Airpods',
     image: 'https://www.saintlad.com/wp-content/uploads/2019/11/fix-airpods-pro-not-working-4.png',
     description:
@@ -13,7 +13,7 @@ const products = [
     numReviews: 6,
   },
   {
-    _id: '2',
+    // _id: '2',
     name: 'iPhone 14 Pro Max 256GB',
     image: 'https://media.croma.com/image/upload/v1662703416/Croma%20Assets/Communication/Mobiles/Images/261991_hhfa33.png',
     description:
@@ -26,7 +26,7 @@ const products = [
     numReviews: 100,
   },
   {
-    _id: '3',
+    // _id: '3',
     name: 'Cannon EOS 80D',
     image: 'http://i1.adis.ws/i/canon/eos-r6-rf24-105mm-f4_7.1_is_stm_front-on_square_6412568cc0e7484b96bd55e43069a56c',
     description:
@@ -39,7 +39,7 @@ const products = [
     numReviews: 22,
   },
   {
-    _id: '4',
+    // _id: '4',
     name: 'Sony Playstation 5',
     image: 'https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1610107735/Croma%20Assets/Gaming/Gaming%20Consoles/Images/231643_eezzze.png/mxw_640,f_auto',
     description:
@@ -52,7 +52,7 @@ const products = [
     numReviews: 2,
   },
   {
-    _id: '5',
+    // _id: '5',
     name: 'Logitech G-Series',
     image: 'https://5.imimg.com/data5/SELLER/Default/2021/10/XY/TX/BK/14158318/logitech-g-series-keyboard-mouse-500x500.png',
     description:
@@ -65,7 +65,7 @@ const products = [
     numReviews: 57,
   },
   {
-    _id: '6',
+    // _id: '6',
     name: 'Amazon Echo Dot 4rd Gen',
     image: 'https://media.croma.com/image/upload/v1665444968/Croma%20Assets/Entertainment/Speakers%20and%20Media%20Players/Images/230159_0_kvbjt5.png',
     description:
@@ -78,7 +78,7 @@ const products = [
     numReviews: 20,
   },
   {
-    _id: '7',
+    // _id: '7',
     name: 'Shade',
     image: 'https://cdn4.iconfinder.com/data/icons/glyphlibrary-one/100/sunglasses-512.png',
     description:
@@ -91,7 +91,7 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: '8',
+    // _id: '8',
     name: 'Dress',
     image: 'https://www.freeiconspng.com/uploads/blue-dress-png-10.png',
     description:

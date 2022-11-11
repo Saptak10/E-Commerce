@@ -1,5 +1,3 @@
-// const mongoose = require('mongoose')
-// import dotenv from 'dotenv'
 const colors = require('colors')
 const users = require('./sampleData/users')
 const products = require('./sampleData/productsData')

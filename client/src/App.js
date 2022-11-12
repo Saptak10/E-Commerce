@@ -13,26 +13,31 @@ import ProductDetailsPage from './pages/ProductDetailsPage';
 import { ShippingAddress } from './pages/ShippingAddress';
 import Account from './pages/Account';
 import Payment from './pages/Payment';
-import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux'
+import { getProducts, reset } from './reducers/products/productSlice'
 
-// import products from "./productsData";
-
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 // import PageNotFound from './pages/PageNotFound';
 
 function App() {
 
-  const [products, setAllProducts] = useState([])
+  const dispatch = useDispatch()
+
+  const { products, isError, message } = useSelector(
+    (state) => state.products
+  )
 
   useEffect(() => {
-    const fetchProduct = async() => {
-      const { data } = await axios.get(`https://saptak-e-commerce.herokuapp.com/products`)
-
-      setAllProducts(data)
+    if (isError) {
+      console.log(message)
     }
 
-    fetchProduct()
-  }, [])
+    dispatch(getProducts())
+
+    return () => {
+      dispatch(reset())
+    }
+  }, [isError, message, dispatch])
 
 
   return (

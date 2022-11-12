@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 // const dotenv = require('dotenv').config();
 const { graphqlHTTP } = require('express-graphql');
+const colors = require('colors')
 
 const dbConnection = require('./config/dbConnection');
 const errorHandler = require('./middleware/errorMiddleware')
@@ -54,4 +55,4 @@ app.use(errorHandler)
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Listening at port http://localhost:${port}/`));
+app.listen(port, console.log(`Listening at port http://localhost:${port}/`.yellow.bold));

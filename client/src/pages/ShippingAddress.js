@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { register, reset } from '../features/user/userSlice'
+import { register, reset } from '../reducers/user/userSlice'
 import Spinner from '../components/Spinner/Spinner'
 
 export const ShippingAddress = () => {

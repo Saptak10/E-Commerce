@@ -1,5 +1,5 @@
 const colors = require('colors')
-const users = require('./sampleData/users')
+const users = require('./sampleData/usersData')
 const products = require('./sampleData/productsData')
 const User = require('./models/userModel.js')
 const Product = require('./models/productModel.js')

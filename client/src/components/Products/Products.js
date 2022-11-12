@@ -1,9 +1,8 @@
 import styled from "styled-components";
-// import { popularProducts } from "../../data";
 import Product from "./Product";
-// import products from '../../productsData'
-import { useEffect, useState } from "react";
-import axios from 'axios'
+import { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux'
+import { getProducts, reset } from '../../reducers/products/productSlice'
 
 const Container = styled.div`
     padding: 20px;
@@ -15,26 +14,27 @@ const Container = styled.div`
 
 const Products = () => {
 
-  const [allProducts, setAllProducts] = useState([])
+  const dispatch = useDispatch()
+
+  const { products, isError, message } = useSelector(
+    (state) => state.products
+  )
 
   useEffect(() => {
-    const fetchProducts = async() => {
-      const { data } = await axios.get('https://saptak-e-commerce.herokuapp.com/products')
-
-      setAllProducts(data)
-
-      console.log("hello")
+    if (isError) {
+      console.log(message)
     }
 
-    fetchProducts()
+    dispatch(getProducts())
 
-    console.log("hello")
-
-  }, [])
+    return () => {
+      dispatch(reset())
+    }
+  }, [isError, message, dispatch])
 
   return (
     <Container>
-      {allProducts.map((item) => (
+      {products.map((item) => (
         <Product item={item} key={item.id} />
       ))}
     </Container>

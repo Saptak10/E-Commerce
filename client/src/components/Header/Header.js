@@ -13,7 +13,7 @@ import SearchIconWrapper from './SearchIconWrapper'
 import StyledInputBase from './StyledInputBase'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { logout, reset } from '../.././features/user/userSlice'
+import { logout, reset } from '../.././reducers/user/userSlice'
 
 import { Link, useNavigate } from 'react-router-dom'
 

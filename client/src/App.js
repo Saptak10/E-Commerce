@@ -9,7 +9,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Cart from './pages/Cart/Cart';
 import Profile from './pages/Profile';
-import ProductDetailsPage from './pages/ProductDetailsPage';
+import ProductDetails from './pages/ProductDetails/ProductDetails';
 import { ShippingAddress } from './pages/ShippingAddress';
 import Account from './pages/Account';
 import Payment from './pages/Payment';
@@ -47,13 +47,13 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             {products.map((item) => (
-              <Route path={'product/'+item._id} element={<ProductDetailsPage item={item} key={item.id} />} />
+              <Route path={'product/'+item._id} element={<ProductDetails item={item} key={item.id} />} />
             ))}
             <Route path='/cart' element={<Cart />} />
             <Route path='/address' element={<ShippingAddress />} />
             <Route path='/account' element={<Account />} />
             <Route path='/payment' element={<Payment />} />
-            <Route path='/checkout' element={<Cart />} />
+            {/* <Route path='/checkout' element={<Checkout />} /> */}
             <Route path='/profile' element={<Profile />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />

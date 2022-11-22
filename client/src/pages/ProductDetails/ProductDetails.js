@@ -8,7 +8,7 @@ import {Container, Wrapper, ImgContainer, Image, InfoContainer, Title, Desc, Pri
 import { useNavigate } from 'react-router-dom'
 import Rating from '../../components/Products/Rating';
 
-const ProductDetails = ({ item, match }) => {
+const ProductDetails = ({ item }) => {
 
   const navigate = useNavigate()
 
@@ -16,8 +16,8 @@ const ProductDetails = ({ item, match }) => {
   const[quantity,setQuantity] = useState(1);
 
   const addToCartHandler = () => {
-    navigate(`/cart/${match.params.id}?qty=${quantity}`)
-    // navigate(`/cart`)
+    // navigate(`/cart/${match.params.id}?qty=${quantity}`)
+    navigate(`/cart`)
   }
 
   const handleChange = (event: SelectChangeEvent) => {

@@ -50,6 +50,7 @@ function App() {
               <Route path={'product/'+item._id} element={<ProductDetails item={item} key={item.id} />} />
             ))}
             <Route path='/cart' element={<Cart />} />
+            {/* <Route path='/cart/:id?' element={<Cart />} /> */}
             <Route path='/address' element={<ShippingAddress />} />
             <Route path='/account' element={<Account />} />
             <Route path='/payment' element={<Payment />} />

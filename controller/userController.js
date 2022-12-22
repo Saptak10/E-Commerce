@@ -28,8 +28,6 @@ module.exports.registerUser = asyncHandler(async(req,res) => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 
-
-
     // storing the data inside the database
     const user = await User.create({
         name,
@@ -43,6 +41,7 @@ module.exports.registerUser = asyncHandler(async(req,res) => {
             _id: user.id,
             name: user.name,
             email: user.email,
+            isAdmin: user.isAdmin,
             token: generateToken(user._id)
         })
     }else {
@@ -51,6 +50,11 @@ module.exports.registerUser = asyncHandler(async(req,res) => {
     }
 
     // res.json({ message: 'Register User' })
+})
+
+module.exports.getRegisteredUser = asyncHandler(async(req,res) => {
+    const users = await User.find()
+    res.json(users)
 })
 
 module.exports.loginUser = asyncHandler(async(req,res) => {
@@ -67,6 +71,7 @@ module.exports.loginUser = asyncHandler(async(req,res) => {
             _id: user.id,
             name: user.name,
             email: user.email,
+            isAdmin: user.isAdmin,
             token: generateToken(user._id)
         })
     } else {
@@ -76,6 +81,16 @@ module.exports.loginUser = asyncHandler(async(req,res) => {
 
     // res.status(200);
     // res.json({ message: 'Login User' })
+})
+
+module.exports.getLoggedInUser = asyncHandler(async(req,res) => {
+    const user = await User.findById(req.params.id)
+
+    if(user) {
+        res.json(user)
+    }else{
+        res.status(404).json({ message: 'User not logged in' })
+    }
 })
 
 module.exports.profileUser = asyncHandler(async(req,res) => {

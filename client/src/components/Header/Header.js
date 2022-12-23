@@ -68,7 +68,7 @@ function Header(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}><Link to='/profile' className='header-link-mobile profile'>{user.name.split(' ')[0]}</Link></MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link to='/profile' className='header-link-mobile profile'>{user ? `${user.name.split(' ')[0]}` : 'Profile'}</Link></MenuItem>
       <MenuItem onClick={handleMenuClose}><Link to='/account' className='header-link-mobile'>My account</Link></MenuItem>
     </Menu>
   );

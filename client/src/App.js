@@ -11,12 +11,13 @@ import Cart from './pages/Cart/Cart';
 import Profile from './pages/Profile';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import { ShippingAddress } from './pages/ShippingAddress';
-import Account from './pages/Account';
 import Payment from './pages/Payment';
 import { useSelector, useDispatch } from 'react-redux'
 import { getProducts, reset } from './reducers/products/productSlice'
 
 import { useEffect } from 'react';
+import Order from './pages/Order';
+import Wishlist from './pages/Wishlist';
 // import PageNotFound from './pages/PageNotFound';
 
 function App() {
@@ -51,8 +52,9 @@ function App() {
             ))}
             <Route path='/cart' element={<Cart />} />
             {/* <Route path='/cart/:id?' element={<Cart />} /> */}
+            <Route path='/orders' element={<Order />} />
+            <Route path='/wishlist' element={<Wishlist />} />
             <Route path='/address' element={<ShippingAddress />} />
-            <Route path='/account' element={<Account />} />
             <Route path='/payment' element={<Payment />} />
             {/* <Route path='/checkout' element={<Checkout />} /> */}
             <Route path='/profile' element={<Profile />} />

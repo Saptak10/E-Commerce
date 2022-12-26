@@ -16,17 +16,6 @@
 .header-link-desktop{
   color: white;
   text-decoration: none;
-  
-}
-
-.header-link-mobile.profile{
-  font-weight: bold;
-  background-color: #f2b9b6;
-  padding-top: 3px;
-  /* padding-bottom: 2px; */
-  padding-left: 15px;
-  padding-right: 15px;
-  border-radius: 10px;
 }
 
 .heading {
@@ -40,6 +29,17 @@
   color: #828282;
 }
 
+.profile{
+  font-weight: bold;
+  background-color: white;
+  color: #000;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 10px;
+  font-size: 15px;
+}
 
 /* form class */
 

@@ -83,16 +83,6 @@ module.exports.loginUser = asyncHandler(async(req,res) => {
     // res.json({ message: 'Login User' })
 })
 
-module.exports.getLoggedInUser = asyncHandler(async(req,res) => {
-    const user = await User.findById(req.params.id)
-
-    if(user) {
-        res.json(user)
-    }else{
-        res.status(404).json({ message: 'User not logged in' })
-    }
-})
-
 module.exports.profileUser = asyncHandler(async(req,res) => {
     // res.status(200).json(req.user)
     const user = await User.findById(req.user._id)
@@ -108,15 +98,36 @@ module.exports.profileUser = asyncHandler(async(req,res) => {
         res.status(404)
         throw new Error('User not found')
     }
-    // const { _id, name, email } = await User.findById(req.user.id)
+    // res.status(200).json({ message: 'Profile User' })
+})
 
-    // res.status(200).json({
-    //     id: _id,
-    //     name,
-    //     email,
-    // })
-    // res.status(200);
-    // res.json({ message: 'Profile User' })
+module.exports.updateProfileUser = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user._id)
+  
+    if (user) {
+      user.name = req.body.name || user.name
+      user.email = req.body.email || user.email
+      if (req.body.password) {
+        //Hashing the password
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(req.body.password, salt)
+
+        user.password = hashedPassword
+      }
+  
+      const updatedUser = await user.save()
+  
+      res.json({
+        _id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        isAdmin: updatedUser.isAdmin,
+        token: generateToken(updatedUser._id),
+      })
+    } else {
+      res.status(404)
+      throw new Error('User not found')
+    }
 })
 
 const generateToken = (id) => {

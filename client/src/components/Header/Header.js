@@ -68,8 +68,9 @@ function Header(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}><Link to='/profile' className='header-link-mobile profile'>{user ? `${user.name.split(' ')[0]}` : 'Profile'}</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to='/account' className='header-link-mobile'>My account</Link></MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link to='/profile' className='header-link-mobile'>Profile</Link></MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link to='/orders' className='header-link-mobile'>Orders</Link></MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link to='/wishlist' className='header-link-mobile'>Wishlist</Link></MenuItem>
     </Menu>
   );
 
@@ -159,7 +160,7 @@ function Header(props) {
           onClick={handleProfileMenuOpen}
           color="inherit"
         >
-          <AccountCircle />
+          <div className='profile'>{user ? `${user.name.split(' ')[0]}` : ''}</div>
         </IconButton>
         <IconButton sx={{display: { sm: 'none' } }}
           size="large"
@@ -177,7 +178,6 @@ function Header(props) {
               </Button>
                 {user ? (
                 <Button sx={{ color: '#fff' }}>
-                {/* <Link onClick={onLogout} className='header-link-desktop'>Logout</Link> */}
                 <div onClick={onLogout} className='header-link-desktop'>Logout</div>
               </Button>
                ) : (
@@ -201,7 +201,7 @@ function Header(props) {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <div className='profile'>{user ? `${user.name.split(' ')[0]}` : ''}</div>
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

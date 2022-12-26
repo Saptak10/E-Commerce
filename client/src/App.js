@@ -44,26 +44,25 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <Header />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            {products.map((item) => (
-              <Route path={'product/'+item._id} element={<ProductDetails item={item} key={item.id} />} />
-            ))}
-            <Route path='/cart' element={<Cart />} />
-            {/* <Route path='/cart/:id?' element={<Cart />} /> */}
-            <Route path='/orders' element={<Order />} />
-            <Route path='/wishlist' element={<Wishlist />} />
-            <Route path='/address' element={<ShippingAddress />} />
-            <Route path='/payment' element={<Payment />} />
-            {/* <Route path='/checkout' element={<Checkout />} /> */}
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            {/* <Route element={<PageNotFound />} /> */}
-          </Routes>
-          {/* <PageNotFound /> */}
-      <Footer />
+        <Header />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          {products.map((item) => (
+            <Route path={'product/'+item._id} element={<ProductDetails item={item} key={item.id} />} />
+          ))}
+          <Route path='/cart' element={<Cart />} />
+          {/* <Route path='/cart/:id?' element={<Cart />} /> */}
+          <Route path='/orders' element={<Order />} />
+          <Route path='/wishlist' element={<Wishlist />} />
+          <Route path='/address' element={<ShippingAddress />} />
+          <Route path='/payment' element={<Payment />} />
+          {/* <Route path='/checkout' element={<Checkout />} /> */}
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          {/* <Route element={<PageNotFound />} /> */}
+        </Routes>
+        <Footer />
       </Router>
       <ToastContainer />
     </div>

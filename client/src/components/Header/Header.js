@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { AppBar, Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, 
   ListItemText, Toolbar, Typography, Button, MenuItem, Menu } from '@mui/material';
 
-import { AccountCircle } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';

@@ -84,8 +84,9 @@ module.exports.loginUser = asyncHandler(async(req,res) => {
 })
 
 module.exports.profileUser = asyncHandler(async(req,res) => {
-    // res.status(200).json(req.user)
-    const user = await User.findById(req.user._id)
+    // // res.status(200).json(req.user)
+    const user = await User.findById(req.user._conditions._id)
+    // console.log(req.user._conditions._id)
 
     if (user) {
         res.json({
@@ -102,7 +103,7 @@ module.exports.profileUser = asyncHandler(async(req,res) => {
 })
 
 module.exports.updateProfileUser = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.user._id)
+    const user = await User.findById(req.user._conditions._id)
   
     if (user) {
       user.name = req.body.name || user.name

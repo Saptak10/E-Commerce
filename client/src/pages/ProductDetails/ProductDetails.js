@@ -7,10 +7,24 @@ import {Container, Wrapper, ImgContainer, Image, InfoContainer, Title, Desc, Pri
   Filter, FilterTitle, FilterColor, AddContainer, AmountContainer, Amount } from "./ProductDetailsStyle"
 import { useNavigate } from 'react-router-dom'
 import Rating from '../../components/Products/Rating';
+import Spinner from '../../components/Spinner/Spinner';
+
+// import { useEffect } from "react";
+// import { useSelector, useDispatch } from 'react-redux'
+// import { getProduct, reset } from '../../reducers/products/productSlice'
+import { useSelector } from 'react-redux'
 
 const ProductDetails = ({ item }) => {
 
   const navigate = useNavigate()
+  // const dispatch = useDispatch()
+
+  const { isLoading } = useSelector(
+    (state) => state.products
+  )
+  // const { products, isError, message } = useSelector(
+  //   (state) => state.products
+  // )
 
   const [size, setSize] = useState('');
   const[quantity,setQuantity] = useState(1);
@@ -23,7 +37,25 @@ const ProductDetails = ({ item }) => {
   const handleChange = (event: SelectChangeEvent) => {
     setSize(event.target.value);
   };
+
+  // useEffect(() => {
+  //   if (isError) {
+  //     console.log(message)
+  //   }
+
+  //   dispatch(getProduct())
+
+  //   return () => {
+  //     dispatch(reset())
+  //   }
+  // }, [isError, message, dispatch])
+
+  // console.log(products)
   
+  if (isLoading) {
+    return <Spinner />
+  }
+
   return (
         <Container>
             <Wrapper>

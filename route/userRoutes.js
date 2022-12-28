@@ -13,7 +13,7 @@ router.route('/register')
 router.post('/login', loginUser)
 
 router.route('/profile')
-    .get(profileUser)
+    .get(protect, profileUser)
     .put(updateProfileUser)
 
 module.exports = router;

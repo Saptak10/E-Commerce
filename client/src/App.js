@@ -13,7 +13,7 @@ import ProductDetails from './pages/ProductDetails/ProductDetails';
 import { ShippingAddress } from './pages/ShippingAddress';
 import Payment from './pages/Payment';
 import { useSelector, useDispatch } from 'react-redux'
-import { getProducts, reset } from './reducers/products/productSlice'
+import { getAllProducts, reset } from './reducers/products/productSlice'
 
 import { useEffect } from 'react';
 import Order from './pages/Order';
@@ -33,7 +33,7 @@ function App() {
       console.log(message)
     }
 
-    dispatch(getProducts())
+    dispatch(getAllProducts())
 
     return () => {
       dispatch(reset())
@@ -48,7 +48,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           {products.map((item) => (
-            <Route path={'product/'+item._id} element={<ProductDetails item={item} key={item.id} />} />
+            <Route path={'products/'+item._id} element={<ProductDetails item={item} key={item.id} />} />
           ))}
           <Route path='/cart' element={<Cart />} />
           {/* <Route path='/cart/:id?' element={<Cart />} /> */}

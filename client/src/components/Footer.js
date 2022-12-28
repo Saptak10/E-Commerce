@@ -3,6 +3,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { Link } from 'react-router-dom';
 
 import styled from "styled-components";
 import { mobile } from "./responsive";
@@ -32,6 +33,10 @@ const SocialIcon = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 20px;
+  transition: all 0.5s ease;
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 const Center = styled.div`
@@ -51,6 +56,7 @@ const List = styled.ul`
 const ListItem = styled.li`
   width: 50%;
   margin-bottom: 10px;
+  text-decoration: none;
 `;
 
 const Footer = () => {
@@ -59,35 +65,45 @@ const Footer = () => {
       <Center>
         <Logo>Checkout different products from below</Logo>
         <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>Man Fashion</ListItem>
-          <ListItem>Woman Fashion</ListItem>
-          <ListItem>Accessories</ListItem>
-          <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Terms</ListItem>
+          <ListItem><Link to='/'>Home</Link></ListItem>
+          <ListItem><Link to='/'>Cart</Link></ListItem>
+          <ListItem><Link to='/'>Man Fashion</Link></ListItem>
+          <ListItem><Link to='/'>Woman Fashion</Link></ListItem>
+          <ListItem><Link to='/'>Accessories</Link></ListItem>
+          <ListItem><Link to='/'>Profile</Link></ListItem>
+          <ListItem><Link to='/'>Orders</Link></ListItem>
+          <ListItem><Link to='/'>Wishlist</Link></ListItem>
+          <ListItem><Link to='/'>Checkout</Link></ListItem>
+          <ListItem><Link to='/'>Terms</Link></ListItem>
         </List>
         <SocialContainer>
-          <SocialIcon color="3B5999">
-            <FacebookIcon />
-          </SocialIcon>
-          <SocialIcon color="E4405F">
-            <InstagramIcon />
-          </SocialIcon>
-          <SocialIcon color="55ACEE">
-            <TwitterIcon />
-          </SocialIcon>
-          <SocialIcon color="0A66C2">
-            <LinkedInIcon />
-          </SocialIcon>
-          <SocialIcon color="171515">
-            <GitHubIcon />
-          </SocialIcon>
+          <a href='https://www.linkedin.com/in/saptak-chakraborty/' target='_blank'>
+            <SocialIcon color="0A66C2">
+              <LinkedInIcon />
+            </SocialIcon>
+          </a>
+          <a href='https://github.com/Saptak10' target='_blank'>
+            <SocialIcon color="171515">
+              <GitHubIcon />
+            </SocialIcon>
+          </a>
+          <a href='https://www.facebook.com/Saptak10' target='_blank'>
+            <SocialIcon color="3B5999">
+              <FacebookIcon />
+            </SocialIcon>
+          </a>
+          <a href='https://www.instagram.com/saptak10/' target='_blank'>
+            <SocialIcon color="E4405F">
+              <InstagramIcon />
+            </SocialIcon>
+          </a>
+          <a href='https://twitter.com/Saptak1000' target='_blank'>
+            <SocialIcon color="55ACEE">
+              <TwitterIcon />
+            </SocialIcon>
+          </a>
         </SocialContainer>
-        <h5>Developed by Saptak Chakraborty © 2022</h5>
+        <h5>Developed by <a href='https://saptakportfolio.netlify.app/' style={{color:'#356B9B', textDecoration:'none'}} target='_blank'>Saptak Chakraborty</a> © 2022</h5>
       </Center>
     </Container>
   );

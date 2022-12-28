@@ -12,9 +12,12 @@ const protect = asyncHandler(async (req, res, next) => {
 
              //Verify token
              const decoded = jwt.verify(token, process.env.JWT_SECRET)
+             
 
              //Get user from the token
              req.user = User.findById(decoded.id).select('-password')
+             
+            //  console.log(req.user._conditions._id)
 
              next()
         } catch (error) {
@@ -33,5 +36,14 @@ const protect = asyncHandler(async (req, res, next) => {
 //Token is present in the header like this
 //Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmFiMDBkYzI0OWI3ZDVmMDI1N2M5YSIsImlhdCI6MTY2Mzc0MzMxMCwiZXhwIjoxNjY2MzM1MzEwfQ.FFxn1Jsn4m67uImnPKLPby4f-IhGRj2BNh_3Bs46_h0
 //From here we need to extract the token part
+
+// const admin = (req, res, next) => {
+//     if (req.user && req.user.isAdmin) {
+//       next()
+//     } else {
+//       res.status(401)
+//       throw new Error('Not authorized as an admin')
+//     }
+//   }
 
 module.exports = protect

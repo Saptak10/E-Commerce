@@ -159,7 +159,7 @@ function Header(props) {
           onClick={handleProfileMenuOpen}
           color="inherit"
         >
-          <div className='profile'>{user ? `${user.name.split(' ')[0]}` : ''}</div>
+          <div className='profile'>{user ? `${user.name.split(' ')[0]}` : 'Account'}</div>
         </IconButton>
         <IconButton sx={{display: { sm: 'none' } }}
           size="large"
@@ -200,7 +200,7 @@ function Header(props) {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <div className='profile'>{user ? `${user.name.split(' ')[0]}` : ''}</div>
+              <div className='profile'>{user ? `${user.name.split(' ')[0]}` : 'Account'}</div>
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

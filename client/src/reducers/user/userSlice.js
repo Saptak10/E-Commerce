@@ -43,6 +43,8 @@ async (user, thunkAPI) => {
   }
 })
 
+// logout user
+
 export const logout = createAsyncThunk('/logout', async () => { await userService.logout()
 })
 

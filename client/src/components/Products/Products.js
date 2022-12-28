@@ -2,7 +2,8 @@ import styled from "styled-components";
 import Product from "./Product";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { getProducts, reset } from '../../reducers/products/productSlice'
+import { getAllProducts, reset } from '../../reducers/products/productSlice'
+import Spinner from '../Spinner/Spinner'
 
 const Container = styled.div`
     padding: 20px;
@@ -16,7 +17,7 @@ const Products = () => {
 
   const dispatch = useDispatch()
 
-  const { products, isError, message } = useSelector(
+  const { products, isError, isLoading, message } = useSelector(
     (state) => state.products
   )
 
@@ -25,12 +26,16 @@ const Products = () => {
       console.log(message)
     }
 
-    dispatch(getProducts())
+    dispatch(getAllProducts())
 
     return () => {
       dispatch(reset())
     }
   }, [isError, message, dispatch])
+
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <Container>

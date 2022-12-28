@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { register, reset } from '../reducers/user/userSlice'
 import Spinner from '../components/Spinner/Spinner'
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -16,28 +14,19 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Container from '@mui/material/Container';
 
+import { useSelector, useDispatch } from 'react-redux'
+import { getUserDetails, reset } from '../reducers/profile/userProfileSlice'
+
 import '../css/Profile.css'
+import { Button } from '@mui/material';
 
 function Profile() {
   
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    age: '',
-    gender: '',
-    dob: '',
-    mobile: 0,
-    password: '',
-    password2: '',
-  })
-
-  const { name, email, age, gender, dob, mobile, password, password2 } = formData
-
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { user, isLoading, isError, message } = useSelector(
-    (state) => state.user
+  const { profile,  isLoading, isError, message } = useSelector(
+    (state) => state.profile
   )
 
   useEffect(() => {
@@ -45,12 +34,47 @@ function Profile() {
       toast.error(message)
     }
 
-    if (!user) {
+    if (profile === 'No user') {
       navigate('/login')
     }
 
     dispatch(reset())
-  }, [user, isError, message, navigate, dispatch])
+  }, [profile, isError, message, navigate, dispatch])
+
+  const [formData, setFormData] = useState({
+    name: profile.name,
+    email: profile.email,
+    age: '',
+    gender: '',
+    dob: '',
+    mobile: 0,
+    password: profile.password,
+    password2: profile.password,
+  })
+
+  const [passwordType, setPasswordType] = useState("password");
+  
+  const togglePassword =()=>{
+    if(passwordType==="password")
+    {
+     setPasswordType("text")
+     return;
+    }
+    setPasswordType("password")
+  }
+
+  const [password2Type, setPassword2Type] = useState("password");
+  
+  const togglePassword2 =()=>{
+    if(password2Type==="password")
+    {
+     setPassword2Type("text")
+     return;
+    }
+    setPassword2Type("password")
+  }
+
+  const { name, email, age, gender, dob, mobile, password, password2 } = formData
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -65,19 +89,21 @@ function Profile() {
     if (password !== password2) {
       toast.error('Passwords do not match')
     } else {
-      const userData = {
-        name,
-        email,
-        age,
-        gender,
-        dob,
-        mobile,
-        password,
-      }
+      // const userData = {
+      //   name,
+      //   email,
+      //   age,
+      //   gender,
+      //   dob,
+      //   mobile,
+      //   password,
+      // }
 
-      dispatch(register(userData))
+      dispatch(getUserDetails())
     }
   }
+
+  console.log(profile)
 
   if (isLoading) {
     return <Spinner />
@@ -109,7 +135,7 @@ function Profile() {
     <Container maxWidth="lg">
       <section className='heading'>
         <h1>
-        {user.name}
+        {profile.name}
         </h1>
       </section>
       <Box sx={{ flexGrow: 1 }}>
@@ -189,7 +215,7 @@ function Profile() {
           </div>
           <div className='form-group'>
             <input
-              type='password'
+              type={passwordType}
               className='form-control'
               id='password'
               name='password'
@@ -197,10 +223,11 @@ function Profile() {
               placeholder='Enter password'
               onChange={onChange}
             />
+            <Button variant="text" onClick={togglePassword}>Show Password</Button>
           </div>
           <div className='form-group'>
             <input
-              type='password'
+              type={password2Type}
               className='form-control'
               id='password2'
               name='password2'
@@ -208,6 +235,7 @@ function Profile() {
               placeholder='Confirm password'
               onChange={onChange}
             />
+            <Button variant="text" onClick={togglePassword2}>Show Password</Button>
           </div>
           <div className='form-group'>
             <button type='submit' className='btn btn-block'>

@@ -77,33 +77,33 @@ const Footer = () => {
           <ListItem><Link to='/'>Terms</Link></ListItem>
         </List>
         <SocialContainer>
-          <a href='https://www.linkedin.com/in/saptak-chakraborty/' target='_blank'>
+          <a href='https://www.linkedin.com/in/saptak-chakraborty/' rel="noreferrer" target='_blank'>
             <SocialIcon color="0A66C2">
               <LinkedInIcon />
             </SocialIcon>
           </a>
-          <a href='https://github.com/Saptak10' target='_blank'>
+          <a href='https://github.com/Saptak10' rel="noreferrer" target='_blank'>
             <SocialIcon color="171515">
               <GitHubIcon />
             </SocialIcon>
           </a>
-          <a href='https://www.facebook.com/Saptak10' target='_blank'>
+          <a href='https://www.facebook.com/Saptak10' rel="noreferrer" target='_blank'>
             <SocialIcon color="3B5999">
               <FacebookIcon />
             </SocialIcon>
           </a>
-          <a href='https://www.instagram.com/saptak10/' target='_blank'>
+          <a href='https://www.instagram.com/saptak10/' rel="noreferrer" target='_blank'>
             <SocialIcon color="E4405F">
               <InstagramIcon />
             </SocialIcon>
           </a>
-          <a href='https://twitter.com/Saptak1000' target='_blank'>
+          <a href='https://twitter.com/Saptak1000' rel="noreferrer" target='_blank'>
             <SocialIcon color="55ACEE">
               <TwitterIcon />
             </SocialIcon>
           </a>
         </SocialContainer>
-        <h5>Developed by <a href='https://saptakportfolio.netlify.app/' style={{color:'#356B9B', textDecoration:'none'}} target='_blank'>Saptak Chakraborty</a> © 2022</h5>
+        <h5>Developed by <a href='https://saptakportfolio.netlify.app/' style={{color:'#356B9B', textDecoration:'none'}} rel="noreferrer" target='_blank'>Saptak Chakraborty</a> © 2022</h5>
       </Center>
     </Container>
   );

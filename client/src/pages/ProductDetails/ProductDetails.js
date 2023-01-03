@@ -3,7 +3,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { InputLabel, MenuItem, FormControl, Button } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import {Container, Wrapper, ImgContainer, Image, InfoContainer, Title, Desc, Price, FilterContainer, 
+import { Container, Wrapper, ImgContainer, Image, InfoContainer, Title, Desc, Price, FilterContainer, 
   Filter, FilterTitle, FilterColor, AddContainer, AmountContainer, Amount } from "./ProductDetailsStyle"
 import { useNavigate } from 'react-router-dom'
 import Rating from '../../components/Products/Rating';
@@ -12,7 +12,6 @@ import Rating from '../../components/Products/Rating';
 // import { useEffect } from "react";
 // import { useSelector, useDispatch } from 'react-redux'
 // import { getProduct, reset } from '../../reducers/products/productSlice'
-// import { useSelector } from 'react-redux'
 
 const ProductDetails = ({ item }) => {
 
@@ -64,7 +63,6 @@ const ProductDetails = ({ item }) => {
                 </ImgContainer>
                 <InfoContainer>
                 <Title>{item.name} {item.brand}</Title>
-                {/* <Desc>5 Star | 20 Reviews</Desc> */}
                 <Desc><Rating value={item.rating} text={` | ${item.numReviews}`}/></Desc>
                 <Desc>{item.description}</Desc>
                 <Price>Rs {item.price}</Price><Desc>( {item.countInStock > 0 ? `${item.countInStock} in Stock` : 'Out Of Stock'} )</Desc>
@@ -82,7 +80,6 @@ const ProductDetails = ({ item }) => {
                         id="demo-simple-select-filled"
                         value={size}
                         onChange={handleChange}
-                        // autoWidth
                         label="Size"
                       >
                         <MenuItem value='S'>S</MenuItem>

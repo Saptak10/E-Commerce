@@ -1,6 +1,6 @@
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InfoIcon from '@mui/icons-material/Info';
 import Rating from "./Rating";
 
@@ -8,9 +8,11 @@ import {Container, Info, Image, Details, PriceBox, Circle, Icon } from "./Produc
 
 import { useDispatch } from 'react-redux'
 import { getProduct } from '../../reducers/products/productSlice'
+import { addToCart } from '../../reducers/cart/cartSlice'
 
 const Product = ({ item }) => {
 
+    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const divStyles = {
@@ -21,13 +23,19 @@ const Product = ({ item }) => {
 
     const route = `products/${item._id}`;
 
+    const addToCartHandler = (product) => {
+        console.log(product)
+        dispatch(addToCart(product))
+        navigate('/cart')
+    }
+
 return (
     <div style={divStyles}>
     <Container>
     <Circle />
     <Image src={item.image} />
     <Info>
-        <Icon>
+        <Icon onClick={() => addToCartHandler(item)}>
             <AddShoppingCartIcon />
         </Icon>
         <Link to={route} onClick={() => dispatch(getProduct(item._id))}>

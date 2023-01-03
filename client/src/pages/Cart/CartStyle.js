@@ -35,9 +35,33 @@ export const TopTexts = styled.div`
   ${mobile({ display: "none" })}
 `;
 export const TopText = styled.span`
-  text-decoration: underline;
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
   margin: 0px 10px;
+`;
+
+export const ClearCartText = styled.span`
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0px 10px;
+  background-color: #EB4646;
+  color: white;
+  fontWeight: bold;
+`;
+
+export const Remove = styled.span`
+  padding: 6px;
+  padding-top: 8px;
+  padding-bottom: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0px 10px;
+  background-color: #EB4646;
+  color: white;
+  fontWeight: bold;
 `;
 
 export const Bottom = styled.div`
@@ -74,13 +98,13 @@ export const Details = styled.div`
 
 export const ProductName = styled.span``;
 
-export const ProductColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-left: 10px;
-  background-color: ${(props) => props.color};
-`;
+// export const ProductColor = styled.div`
+//   width: 20px;
+//   height: 20px;
+//   border-radius: 50%;
+//   margin-left: 10px;
+//   background-color: ${(props) => props.color};
+// `;
 
 export const ProductSize = styled.span`
 display: flex;
@@ -100,9 +124,13 @@ export const ProductAmountContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export const ProductAmount = styled.div`
+export const ProductQuantity = styled.div`
   font-size: 24px;
   margin: 5px;
+  font-weight: bold;
+  background-color: #ACACAC;
+  border-radius: 5px;
+  padding: 5px;
   ${mobile({ margin: "5px 15px" })}
 `;
 

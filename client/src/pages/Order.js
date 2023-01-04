@@ -50,13 +50,11 @@ const Order = () => {
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                    <TableCell>ID</TableCell>
+                    <TableCell align="right">ID</TableCell>
                     <TableCell align="right">DATE (TIME)</TableCell>
                     <TableCell align="right">QUANTITY</TableCell>
                     <TableCell align="right">AMOUNT</TableCell>
-                    <TableCell align="right">ACTIONS
-                      <ClearCartText onClick={() => clearOrdersHistory()}>Clear Order History</ClearCartText>
-                    </TableCell>
+                    <TableCell align="right"><ClearCartText onClick={() => clearOrdersHistory()}>Clear Order History</ClearCartText></TableCell>
                   </TableRow>
                 </TableHead>
               </Table>
@@ -68,12 +66,12 @@ const Order = () => {
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                   >
-                    <span style={{textAlign: 'left', width:'210px'}} >
+                    <span style={{textAlign: 'center', width:'150px'}} >
                       {row.id}
                     </span>
                     <span style={{textAlign: 'center', width:'210px'}}>{row.date.split(', ')[0]} ({row.date.split(', ')[1]})</span>
-                    <span style={{textAlign: 'right', width:'210px'}}>{row.totalQuantity}</span>
-                    <span style={{textAlign: 'right', width:'210px'}}>{row.totalAmount}</span>
+                    <span style={{textAlign: 'center', width:'210px'}}>{row.totalQuantity}</span>
+                    <span style={{textAlign: 'center', width:'210px'}}>{row.totalAmount}</span>
                     <span style={{textAlign: 'right', width:'210px'}}>
                       <Remove onClick={() => handleRemoveFromOrders(row)}>
                         <DeleteForeverIcon/>

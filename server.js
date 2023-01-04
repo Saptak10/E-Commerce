@@ -34,12 +34,8 @@ app.use('/graphql',
     graphiql : process.env.NODE_ENV === 'development',
 }));
 
-// app.use('/', (req, res) => {
-//     res.send('Backend API Server is running...')
-// })
 app.use('/', userRoute)
 app.use('/products', productRoute)
-
 
 app.use(errorHandler)
 

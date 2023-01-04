@@ -68,13 +68,10 @@ export const Checkout = () => {
   const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID
   const USER_ID = process.env.REACT_APP_PUBLIC_KEY
 
-  console.log(SERVICE_ID, TEMPLATE_ID, USER_ID)
-  console.log(process.env.NODE_ENV)
-
   function checkoutHandler(e) {
     e.preventDefault();
 
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV !== "development") {
       emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
         .then((result) => {
             console.log(result.text);
@@ -83,10 +80,12 @@ export const Checkout = () => {
       });
     }
 
-      dispatch(addToOrders(cart));
-      dispatch(clearCart());
-      navigate('/orders')
-    }
+    dispatch(addToOrders(cart));
+
+    dispatch(clearCart());
+    
+    navigate('/orders')
+  }
 
   if (isLoading) {
     return <Spinner />

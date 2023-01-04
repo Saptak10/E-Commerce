@@ -40,6 +40,10 @@ const Order = () => {
     setExpanded(isExpanded ? panel : false);
   };
 
+  const clearOrdersHistoryHandler = () => {
+    dispatch(clearOrdersHistory());
+  };
+
   return (
     <div>
         <h2>
@@ -54,7 +58,7 @@ const Order = () => {
                     <TableCell align="right">DATE (TIME)</TableCell>
                     <TableCell align="right">QUANTITY</TableCell>
                     <TableCell align="right">AMOUNT</TableCell>
-                    <TableCell align="right"><ClearCartText onClick={() => clearOrdersHistory()}>Clear Order History</ClearCartText></TableCell>
+                    <TableCell align="right"><ClearCartText onClick={() => clearOrdersHistoryHandler()}>Clear Order History</ClearCartText></TableCell>
                   </TableRow>
                 </TableHead>
               </Table>

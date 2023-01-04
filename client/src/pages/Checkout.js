@@ -63,11 +63,17 @@ export const Checkout = () => {
       [e.target.name]: e.target.value,
     }))
   }
+  
+  const SERVICE_ID = process.env.REACT_APP_SERVICE_ID
+  const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID
+  const USER_ID = process.env.REACT_APP_PUBLIC_KEY
+
+  console.log(SERVICE_ID, TEMPLATE_ID, USER_ID)
 
   function checkoutHandler(e) {
     e.preventDefault();
 
-    emailjs.sendForm('service_zr7x8ti', 'template_7rt10zo', e.target, '0ZQRXDpIrSyeyBDOA')
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
       .then((result) => {
           console.log(result.text);
       }, (error) => {

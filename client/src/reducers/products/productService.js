@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // const API_URL = 'http://localhost:5000/products'
-const API_URL = 'https://saptak-ebuy-world.onrender.com/products'
+const API_URL = `${process.env.REACT_APP_BACKEND_API}/products`
 
 const getAllProducts = async () => {
   

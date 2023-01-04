@@ -105,7 +105,7 @@ const Cart = () => {
                 <SummaryItemText>Total</SummaryItemText>
                 <SummaryItemPrice>Rs {totalAmount + 40}</SummaryItemPrice>
               </SummaryItem>
-              <Button onClick={() => handleRemoveFromCart()}><Link className='header-link-desktop' to='/address'>CHECKOUT NOW</Link></Button>
+              <Button><Link className='header-link-desktop' to='/address'>CHECKOUT NOW</Link></Button>
             </Summary>
           </Bottom>
         </>

@@ -43,6 +43,8 @@ function Login() {
   const onSubmit = (e) => {
     e.preventDefault()
 
+    console.log(e.target)
+
     const userData = {
       email,
       password

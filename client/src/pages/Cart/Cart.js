@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import {Container, Wrapper, Title, Top, TopButton, TopTexts, TopText, Bottom,Info, 
   Product, ProductDetail, Image, Details, ProductName, Quantity, 
   ProductSize, PriceDetail, ProductAmountContainer, ProductQuantity, ProductPrice, Hr, 
-  Summary, SummaryTitle, SummaryItem, SummaryItemText, SummaryItemPrice, Button, ClearCartText, Remove } from "./CartStyle"
+  Summary, SummaryTitle, SummaryItem, SummaryItemText, SummaryItemPrice, Button, ClearText, Remove } from "./CartStyle"
 
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart, } from '../.././reducers/cart/cartSlice'
@@ -21,6 +21,8 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
   const { cartItems, totalQuantity, totalAmount } = cart;
+
+  const wishlist = useSelector((state) => state.wishlist);
 
   useEffect(() => {
     dispatch(getTotals());
@@ -51,10 +53,9 @@ const Cart = () => {
             <Link to='/'><TopButton>CONTINUE SHOPPING</TopButton></Link>
             <TopTexts>
               <TopText>Total Items = {totalQuantity}</TopText>
-              <TopText>Your Wishlist (0)</TopText>
-              <ClearCartText onClick={() => handleClearCart()}>Clear Cart</ClearCartText>
+              <ClearText onClick={() => handleClearCart()}>Clear Cart</ClearText>
             </TopTexts>
-            <TopButton type="filled"><Link to='/checkout' className='header-link-desktop'>CHECKOUT NOW</Link></TopButton>
+            <Link to='/wishlist'><TopButton>Your Wishlist ({wishlist.wishlistItems.length})</TopButton></Link>
           </Top>
           <Bottom>
             <Info>

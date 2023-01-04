@@ -13,7 +13,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import { Product, ProductDetail, Image, Details, ProductName, ProductSize, Quantity, ClearCartText,
+import { Product, ProductDetail, Image, Details, ProductName, ProductSize, Quantity, ClearText,
   PriceDetail, ProductAmountContainer, ProductQuantity, ProductPrice, Remove } from "./Cart/CartStyle"
 
 import { removeFromOrders, clearOrdersHistory } from '../reducers/order/orderSlice'
@@ -58,7 +58,7 @@ const Order = () => {
                     <TableCell align="right">DATE (TIME)</TableCell>
                     <TableCell align="right">QUANTITY</TableCell>
                     <TableCell align="right">AMOUNT</TableCell>
-                    <TableCell align="right"><ClearCartText onClick={() => clearOrdersHistoryHandler()}>Clear Order History</ClearCartText></TableCell>
+                    <TableCell align="right"><ClearText onClick={() => clearOrdersHistoryHandler()}>Clear Order History</ClearText></TableCell>
                   </TableRow>
                 </TableHead>
               </Table>

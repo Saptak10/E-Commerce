@@ -9,6 +9,7 @@ import {Container, Info, Image, Details, PriceBox, Circle, Icon } from "./Produc
 import { useDispatch } from 'react-redux'
 // import { getProduct } from '../../reducers/products/productSlice'
 import { addToCart } from '../../reducers/cart/cartSlice'
+import { addToWishlist } from '../../reducers/wishlist/wishlistSlice'
 
 const Product = ({ item }) => {
 
@@ -24,9 +25,13 @@ const Product = ({ item }) => {
     const route = `products/${item._id}`;
 
     const addToCartHandler = (product) => {
-        console.log(product)
         dispatch(addToCart(product))
         navigate('/cart')
+    }
+
+    const addToWishlistHandler = (product) => {
+        dispatch(addToWishlist(product))
+        navigate('/wishlist')
     }
 
 return (
@@ -44,7 +49,7 @@ return (
                 <InfoIcon />
             </Icon>
         </Link>
-        <Icon>
+        <Icon onClick={() => addToWishlistHandler(item)}>
             <FavoriteBorderIcon />
         </Icon>
     </Info>

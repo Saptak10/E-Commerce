@@ -12,7 +12,8 @@ export const orderSlice = createSlice({
     initialState,
     reducers: {
       addToOrders: (state, action) => {
-        let tempProductItem = { ...action.payload, date: new Date().toLocaleString(), id: Math.floor(Math.random() * 1000000000) };
+        let tempProductItem = { ...action.payload, date: new Date().toLocaleString(), 
+          id: Math.floor(Math.random() * 1000000000) };
         state.orderItems.push(tempProductItem);
         toast.success("Order Placed", {
           position: "bottom-left",

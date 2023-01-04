@@ -71,14 +71,14 @@ export const Checkout = () => {
   function checkoutHandler(e) {
     e.preventDefault();
 
-    if (process.env.NODE_ENV !== "development") {
+    // if (process.env.NODE_ENV !== "development") {
       emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
         .then((result) => {
             console.log(result.text);
         }, (error) => {
             console.log(error.text);
       });
-    }
+    // }
 
     dispatch(addToOrders(cart));
 

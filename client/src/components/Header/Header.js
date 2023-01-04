@@ -4,7 +4,7 @@ import { AppBar, Box, Divider, Drawer, IconButton, List, ListItem, ListItemButto
   ListItemText, Toolbar, Typography, Button, MenuItem, Menu } from '@mui/material';
 
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
+// import SearchIcon from '@mui/icons-material/Search';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 
 // import Search from './Search'

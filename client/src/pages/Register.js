@@ -5,6 +5,8 @@ import { toast } from 'react-toastify'
 import { register, reset } from '../reducers/user/userSlice'
 import Spinner from '../components/Spinner/Spinner'
 
+import { Button } from '@mui/material';
+
 function Register() {
   const [formData, setFormData] = useState({
     name: '',
@@ -33,6 +35,28 @@ function Register() {
     dispatch(reset())
 
   }, [user, isError, isSuccess, message, navigate, dispatch])
+
+  const [passwordType, setPasswordType] = useState("password");
+  
+  const togglePassword =()=>{
+    if(passwordType==="password")
+    {
+     setPasswordType("text")
+     return;
+    }
+    setPasswordType("password")
+  }
+
+  const [password2Type, setPassword2Type] = useState("password");
+  
+  const togglePassword2 =()=>{
+    if(password2Type==="password")
+    {
+     setPassword2Type("text")
+     return;
+    }
+    setPassword2Type("password")
+  }
   
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -91,22 +115,24 @@ function Register() {
             onChange={onChange}/>
           </div>
           <div className='form-group'>
-            <input type="password" 
+            <input type={passwordType}
             className='form-control' 
             id='password'
             name='password' 
             value={password} 
             placeholder='Enter your password'
             onChange={onChange}/>
+            <Button variant="text" onClick={togglePassword}>Show Password</Button>
           </div>
           <div className='form-group'>
-            <input type="password" 
+            <input type={password2Type} 
             className='form-control' 
             id='password2'
             name='password2' 
             value={password2} 
             placeholder='Confirm your password'
             onChange={onChange}/>
+            <Button variant="text" onClick={togglePassword2}>Show Password</Button>
           </div>
           <div className='form-group'>
             <button type="submit" className='btn btn-block'>Submit</button>

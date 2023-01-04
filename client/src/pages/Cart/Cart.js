@@ -54,7 +54,7 @@ const Cart = () => {
               <TopText>Your Wishlist (0)</TopText>
               <ClearCartText onClick={() => handleClearCart()}>Clear Cart</ClearCartText>
             </TopTexts>
-            <TopButton type="filled"><Link to='/address' className='header-link-desktop'>CHECKOUT NOW</Link></TopButton>
+            <TopButton type="filled"><Link to='/checkout' className='header-link-desktop'>CHECKOUT NOW</Link></TopButton>
           </Top>
           <Bottom>
             <Info>
@@ -105,7 +105,7 @@ const Cart = () => {
                 <SummaryItemText>Total</SummaryItemText>
                 <SummaryItemPrice>Rs {totalAmount + 40}</SummaryItemPrice>
               </SummaryItem>
-              <Button><Link className='header-link-desktop' to='/address'>CHECKOUT NOW</Link></Button>
+              <Button><Link className='header-link-desktop' to='/checkout'>CHECKOUT NOW</Link></Button>
             </Summary>
           </Bottom>
         </>

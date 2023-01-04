@@ -10,7 +10,7 @@ import Register from './pages/Register';
 import Cart from './pages/Cart/Cart';
 import Profile from './pages/Profile';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
-import { ShippingAddress } from './pages/ShippingAddress';
+import { Checkout } from './pages/Checkout';
 import Payment from './pages/Payment';
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllProducts, reset } from './reducers/products/productSlice'
@@ -54,7 +54,7 @@ function App() {
           {/* <Route path='/cart/:id?' element={<Cart />} /> */}
           <Route path='/orders' element={<Order />} />
           <Route path='/wishlist' element={<Wishlist />} />
-          <Route path='/address' element={<ShippingAddress />} />
+          <Route path='/checkout' element={<Checkout />} />
           <Route path='/payment' element={<Payment />} />
           {/* <Route path='/checkout' element={<Checkout />} /> */}
           <Route path='/profile' element={<Profile />} />

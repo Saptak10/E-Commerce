@@ -9,13 +9,13 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 
 import { clearCart } from '../reducers/cart/cartSlice'
 
 import { addToOrders } from '../reducers/order/orderSlice'
 
-export const ShippingAddress = () => {
+export const Checkout = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -67,16 +67,16 @@ export const ShippingAddress = () => {
   function checkoutHandler(e) {
     e.preventDefault();
 
-    // emailjs.sendForm('service_zr7x8ti', 'template_7rt10zo', e.target, '0ZQRXDpIrSyeyBDOA')
-    //   .then((result) => {
-    //       console.log(result.text);
-    //   }, (error) => {
-    //       console.log(error.text);
-    //   });
+    emailjs.sendForm('service_zr7x8ti', 'template_7rt10zo', e.target, '0ZQRXDpIrSyeyBDOA')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
 
       dispatch(addToOrders(cart));
       dispatch(clearCart());
-      navigate('/')
+      navigate('/orders')
     }
 
   if (isLoading) {
@@ -92,9 +92,9 @@ export const ShippingAddress = () => {
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={6}>
             <Grid item xs={5} >
-                <h1>
+                <h2>
                 Profile details
-                </h1>
+                </h2>
                 <div className='form-group'>
                   <input
                     type='text'
@@ -182,7 +182,6 @@ export const ShippingAddress = () => {
               <h1>hello fren</h1>
           </div> */}
             <button type='submit' className='btn btn-block'>
-                  {/* Go for payment */}
                   Place Order
             </button>
         </Grid>

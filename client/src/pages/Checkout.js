@@ -69,7 +69,7 @@ export const Checkout = () => {
   const USER_ID = process.env.REACT_APP_PUBLIC_KEY
 
   console.log(SERVICE_ID, TEMPLATE_ID, USER_ID)
-  console.log(process.env)
+  console.log(process.env.NODE_ENV)
 
   function checkoutHandler(e) {
     e.preventDefault();

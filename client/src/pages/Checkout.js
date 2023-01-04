@@ -9,7 +9,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 
 import { clearCart } from '../reducers/cart/cartSlice'
 
@@ -67,12 +67,12 @@ export const Checkout = () => {
   function checkoutHandler(e) {
     e.preventDefault();
 
-    // emailjs.sendForm('service_zr7x8ti', 'template_7rt10zo', e.target, '0ZQRXDpIrSyeyBDOA')
-    //   .then((result) => {
-    //       console.log(result.text);
-    //   }, (error) => {
-    //       console.log(error.text);
-    // });
+    emailjs.sendForm('service_zr7x8ti', 'template_7rt10zo', e.target, '0ZQRXDpIrSyeyBDOA')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+    });
 
       dispatch(addToOrders(cart));
       dispatch(clearCart());

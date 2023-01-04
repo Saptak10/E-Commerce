@@ -8,10 +8,12 @@ import Spinner from '../components/Spinner/Spinner'
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
 
-import emailjs from "@emailjs/browser";
+// import emailjs from "@emailjs/browser";
+
+import { clearCart } from '../reducers/cart/cartSlice'
+
+import { addToOrders } from '../reducers/order/orderSlice'
 
 export const ShippingAddress = () => {
 
@@ -62,24 +64,19 @@ export const ShippingAddress = () => {
     }))
   }
 
-  const Item = styled(Paper)(({ theme }) => ({
-    boxShadow: '0 0 0 0',
-    marginBottom: '20px',
-    textAlign: 'center',
-  }));
-
   function checkoutHandler(e) {
     e.preventDefault();
 
-    console.log(e.target)
-    // console.log(details)
+    // emailjs.sendForm('service_zr7x8ti', 'template_7rt10zo', e.target, '0ZQRXDpIrSyeyBDOA')
+    //   .then((result) => {
+    //       console.log(result.text);
+    //   }, (error) => {
+    //       console.log(error.text);
+    //   });
 
-    emailjs.sendForm('service_zr7x8ti', 'template_7rt10zo', e.target, '0ZQRXDpIrSyeyBDOA')
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
+      dispatch(addToOrders(cart));
+      dispatch(clearCart());
+      navigate('/')
     }
 
   if (isLoading) {
@@ -91,11 +88,10 @@ export const ShippingAddress = () => {
       <h1 className='heading'>
         Confirm your details
       </h1>
-      <Box sx={{ flexGrow: 1 }}>
-        <form onSubmit={checkoutHandler}>
-          <Grid container>
-            <Grid item xs={6}>
-              <Item className='form'>
+      <form onSubmit={checkoutHandler}>
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container spacing={6}>
+            <Grid item xs={5} >
                 <h1>
                 Profile details
                 </h1>
@@ -132,14 +128,11 @@ export const ShippingAddress = () => {
                     onChange={onChange}
                   />
                 </div>
-              </Item>
           </Grid>
-          <Grid item xs={6}>
-            <Item>
+          <Grid item xs={7}>
             <h2>
             Your shipping address
           </h2>
-          <section className='form'>
             <div className='form-group'>
               <input
                 type='address'
@@ -184,18 +177,17 @@ export const ShippingAddress = () => {
                 onChange={onChange}
               />
             </div>
-        </section>
-          </Item>
           </Grid>
-          <div style={{display: 'none'}}>
+          {/* <div style={{display: 'none'}}>
               <h1>hello fren</h1>
-          </div>
+          </div> */}
             <button type='submit' className='btn btn-block'>
-                  Go for payment
+                  {/* Go for payment */}
+                  Place Order
             </button>
         </Grid>
-        </form> 
-      </Box>
+        </Box>
+      </form> 
   </Container>
   );
 };

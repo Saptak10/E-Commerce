@@ -10,19 +10,19 @@ const getAllProducts = async () => {
     return response.data
   }
 
-const getProduct = async (productId) => {
-  console.log('hello '+API_URL + '/'+ productId)
+// const getProduct = async (productId) => {
+//   console.log('hello '+API_URL + '/'+ productId)
 
-  const response = await axios.get(API_URL + '/'+ productId)
+//   const response = await axios.get(API_URL + '/'+ productId)
 
-  // console.log(response.data)
+//   // console.log(response.data)
 
-  return response.data
-}
+//   return response.data
+// }
 
 const productSlice = {
   getAllProducts,
-  getProduct,
+  // getProduct,
   }
   
 export default productSlice

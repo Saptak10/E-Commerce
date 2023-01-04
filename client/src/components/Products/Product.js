@@ -7,7 +7,7 @@ import Rating from "./Rating";
 import {Container, Info, Image, Details, PriceBox, Circle, Icon } from "./ProductStyle"
 
 import { useDispatch } from 'react-redux'
-import { getProduct } from '../../reducers/products/productSlice'
+// import { getProduct } from '../../reducers/products/productSlice'
 import { addToCart } from '../../reducers/cart/cartSlice'
 
 const Product = ({ item }) => {
@@ -38,7 +38,8 @@ return (
         <Icon onClick={() => addToCartHandler(item)}>
             <AddShoppingCartIcon />
         </Icon>
-        <Link to={route} onClick={() => dispatch(getProduct(item._id))}>
+        <Link to={route}>
+        {/* <Link to={route} onClick={() => dispatch(getProduct(item._id))}> */}
             <Icon>
                 <InfoIcon />
             </Icon>

@@ -48,7 +48,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           {products.map((item) => (
-            <Route path={'products/'+item._id} element={<ProductDetails item={item} key={item.id} />} />
+            <Route path={'products/'+item._id} element={<ProductDetails item={item} key={item._id} />} />
           ))}
           <Route path='/cart' element={<Cart />} />
           {/* <Route path='/cart/:id?' element={<Cart />} /> */}

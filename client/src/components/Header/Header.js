@@ -7,9 +7,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 
-import Search from './Search'
-import SearchIconWrapper from './SearchIconWrapper'
-import StyledInputBase from './StyledInputBase'
+// import Search from './Search'
+// import SearchIconWrapper from './SearchIconWrapper'
+// import StyledInputBase from './StyledInputBase'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../.././reducers/user/userSlice'
@@ -141,7 +141,7 @@ function Header(props) {
             <Link to='/' className='header-link-desktop'>EBuy World</Link>
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Search>
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -149,7 +149,7 @@ function Header(props) {
               placeholder="SEARCH"
               inputProps={{ 'aria-label': 'search' }}
             />
-          </Search>
+          </Search> */}
           <IconButton sx={{display: { sm: 'none' } }}
           size="large"
           edge="end"

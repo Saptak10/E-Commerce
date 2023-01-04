@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // const API_URL = 'http://localhost:5000/profile'
-const API_URL = `${process.env.REACT_APP_BACKEND_API}profile`
+const API_URL = `${process.env.REACT_APP_BACKEND_API}/profile`
 
 const getUserDetails = async (userData) => {
   // const response = await axios.get(API_URL, userData)

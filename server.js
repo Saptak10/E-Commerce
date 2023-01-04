@@ -1,6 +1,5 @@
 const path = require('path');
 const express = require('express');
-// const dotenv = require('dotenv').config();
 const { graphqlHTTP } = require('express-graphql');
 const colors = require('colors')
 
@@ -19,15 +18,6 @@ const app = express();
 
 if (process.env.NODE_ENV !== "production") {
     require('dotenv').config();
-//     app.use(express.static(path.join(__dirname, './client/build')));
-
-//     app.get('*', (req, res) =>
-//     res.sendFile(
-//     path.resolve(__dirname, './', 'client', 'build', 'index.html')
-//     )
-//     );
-// } else {
-//     app.get('/', (req, res) => res.send('Backend API Server is running...'));
 }
 
 const cors = require('cors');

@@ -74,12 +74,14 @@ export const Checkout = () => {
   function checkoutHandler(e) {
     e.preventDefault();
 
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-    });
+    if (process.env.NODE_ENV === "production") {
+      emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+      });
+    }
 
       dispatch(addToOrders(cart));
       dispatch(clearCart());
